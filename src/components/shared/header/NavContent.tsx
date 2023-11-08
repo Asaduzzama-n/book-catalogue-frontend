@@ -6,8 +6,7 @@ import {
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@radix-ui/react-navigation-menu";
-
-import { category } from "../../../public/navBarBooksCategory";
+import { category } from "../../../../public/navBarBooksCategory";
 
 export default function NavContent() {
   return (
@@ -28,7 +27,12 @@ export default function NavContent() {
                     .filter((item) => item.group === "ACADEMIC & NON FICTION")
                     .map((component) => (
                       <li key={component.title}>
-                        <Link to={component.href}>{component.title}</Link>
+                        <Link
+                          className="hover:border-b-2 border-black"
+                          to={component.href}
+                        >
+                          {component.title}
+                        </Link>
                       </li>
                     ))}
                 </ul>
@@ -44,7 +48,12 @@ export default function NavContent() {
                     )
                     .map((component) => (
                       <li key={component.title}>
-                        <Link to={component.href}>{component.title}</Link>
+                        <Link
+                          className="hover:border-b-2 border-black"
+                          to={component.href}
+                        >
+                          {component.title}
+                        </Link>
                       </li>
                     ))}
                 </ul>
@@ -58,7 +67,12 @@ export default function NavContent() {
                     .filter((item) => item.group === "CHILDREN'S BOOKS")
                     .map((component) => (
                       <li key={component.title}>
-                        <Link to={component.href}>{component.title}</Link>
+                        <Link
+                          className="hover:border-b-2 border-black"
+                          to={component.href}
+                        >
+                          {component.title}
+                        </Link>
                       </li>
                     ))}
                 </ul>
@@ -72,7 +86,12 @@ export default function NavContent() {
                     .filter((item) => item.group === "CHILDREN'S BOOKS")
                     .map((component) => (
                       <li key={component.title}>
-                        <Link to={component.href}>{component.title}</Link>
+                        <Link
+                          className="hover:border-b-2 border-black"
+                          to={component.href}
+                        >
+                          {component.title}
+                        </Link>
                       </li>
                     ))}
                 </ul>
