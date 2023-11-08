@@ -1,15 +1,13 @@
-import NavBar from "./layouts/shared/NavBar"
-import { ResponsiveNavSheet } from "./layouts/ResponsiveNavSheet"
+import NavBar from "./layouts/shared/NavBar";
+import Home from "./pages/Home/Home";
 
 function App() {
-
-
   return (
     <>
       <NavBar></NavBar>
-      {/* <ResponsiveNavSheet></ResponsiveNavSheet> */}
+      <Home></Home>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

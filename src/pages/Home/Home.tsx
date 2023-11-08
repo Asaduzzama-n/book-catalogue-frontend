@@ -1,6 +1,11 @@
+import HomeCarousel from "./HomeCarousel";
 
 export default function Home() {
   return (
-    <div>Home</div>
-  )
+    <div>
+      <div className="">
+        <HomeCarousel></HomeCarousel>
+      </div>
+    </div>
+  );
 }
