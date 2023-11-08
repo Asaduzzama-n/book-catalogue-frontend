@@ -1,5 +1,7 @@
 import HomeCarousel from "./HomeCarousel";
 import { BiArrowToTop } from "react-icons/bi";
+import HomeCategory from "./HomeCategory";
+import HomeNewArrival from "./HomeNewArrival";
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -11,8 +13,14 @@ const scrollToTop = () => {
 export default function Home() {
   return (
     <div>
-      <div className="h-screen">
+      <div>
         <HomeCarousel></HomeCarousel>
+      </div>
+      <div className="hidden md:flex visible md:w-4/5 mx-auto ">
+        <HomeCategory></HomeCategory>
+      </div>
+      <div className="md:w-4/5 mx-auto">
+        <HomeNewArrival></HomeNewArrival>
       </div>
 
       <div className="fixed bottom-4 right-4 z-10">
