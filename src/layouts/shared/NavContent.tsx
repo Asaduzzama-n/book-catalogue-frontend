@@ -91,10 +91,10 @@ export default function NavContent() {
           </Link>
         </NavigationMenuItem>
         <NavigationMenuItem className="my-5 md:mx-5 hover:bg-[#ededed] p-2 rounded-md">
-          <NavigationMenuTrigger className="text-lg">
+          <NavigationMenuTrigger className="text-lg ">
             Conversations
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="absolute  mt-2 bg-white shadow-md p-4 ">
+          <NavigationMenuContent className="absolute  mt-2 bg-white shadow-md p-4 z-10">
             <ul className="">
               <li>
                 <Link to="/event">Event</Link>
