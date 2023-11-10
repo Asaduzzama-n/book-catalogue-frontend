@@ -6,15 +6,15 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { dummy } from "../../../public/dummyData";
 
-export default function HomeNewArrival() {
+export default function HomeBestSeller() {
   return (
     <div className="text-center ">
-      <div className="text-center ">
-        <h1 className="text-4xl font-medium">NEW ARRIVALS</h1>
+      <div className="text-center p-5">
+        <h1 className="text-4xl font-medium">BEST SELLERS</h1>
       </div>
 
       <div className="my-10">
-        <div className="w-11/12 mx-auto">
+        <div className="w-11/12 md:w-3/4 mx-auto">
           <Carousel
             className="z-0"
             removeArrowOnDeviceType={["tablet", "mobile"]}
@@ -42,10 +42,11 @@ export default function HomeNewArrival() {
             className="text-[#232F3E] hover:text-yellow-600 text-lg font-medium "
             to={"/"}
           >
-            VIEW ALL NEW ARRIVALS
+            VIEW ALL BESTSELLERS
           </Link>
         </div>
       </div>
+      <hr />
     </div>
   );
 }

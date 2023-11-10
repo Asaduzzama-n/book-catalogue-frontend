@@ -1,33 +1,29 @@
-"use client"
+"use client";
 
-import { useForm } from "react-hook-form"
-import {FiSearch} from 'react-icons/fi'
- 
+import { useForm } from "react-hook-form";
+import { FiSearch } from "react-icons/fi";
+
 type SearchInput = {
-    searchKey : string | null;
-}
-
-
+  searchKey: string | null;
+};
 
 export default function NavSearchForm() {
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm<SearchInput>()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SearchInput>();
 
-      const onSubmit = (data:SearchInput) => {
-        console.log(data.searchKey);
-      };
-
+  const onSubmit = (data: SearchInput) => {
+    console.log(data.searchKey);
+  };
 
   return (
     <div>
-
-     <form onSubmit={handleSubmit(onSubmit)} className="relative mb-5">
-        <div className="relative flex w-2/4 mx-auto">
+      <form onSubmit={handleSubmit(onSubmit)} className="relative mb-5">
+        <div className="relative flex md:w-2/4 mx-auto">
           <input
-            {...register('searchKey')}
+            {...register("searchKey")}
             type="text"
             className="w-full py-2 pl-3 pr-10 border border-gray-300 rounded-l-lg outline-none focus:outline-none"
             placeholder="Search..."
@@ -41,12 +37,7 @@ export default function NavSearchForm() {
         </div>
       </form>
 
-        <hr />
-
-
-  </div>
-  
-
-  
-  )
+      <hr />
+    </div>
+  );
 }
