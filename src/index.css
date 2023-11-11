@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import "react-toastify/dist/ReactToastify.css";
 @layer base {
   @layer base {
     :root {
@@ -50,7 +50,9 @@
     }
   }
 }
-
+.Toastify__progress-bar {
+  background: #232f3e !important; /* Set your desired color */
+}
 @layer base {
   * {
     @apply border-border;

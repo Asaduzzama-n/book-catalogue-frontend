@@ -1,15 +1,15 @@
-import Main from "@/layouts/Main/Main";
-import Checkout from "@/pages/checkout/checkout";
+import App from "@/App";
+import Checkout from "@/pages/checkout/Checkout";
 import Home from "@/pages/home/Home";
 import { createBrowserRouter } from "react-router-dom";
 
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <Main></Main>,
+    element: <App></App>,
     children: [
       {
-        path: "/",
+        index: true,
         element: <Home></Home>,
       },
       {

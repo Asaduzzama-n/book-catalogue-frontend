@@ -3,18 +3,11 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import economicsCat from "../../assets/images/economicsCat.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import {
-  HiMinus,
-  HiOutlinePlus,
-  HiOutlineShoppingCart,
-  HiOutlineTrash,
-} from "react-icons/hi";
+import { HiMinus, HiOutlinePlus } from "react-icons/hi";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { AiOutlineClose, AiOutlineArrowLeft } from "react-icons/ai";
 import { Link } from "react-router-dom";
@@ -95,7 +88,7 @@ export function CartSheet() {
                 <div className="  mt-10 text-white hover:text-[#232F3E] ">
                   <SheetClose asChild>
                     <Link
-                      className="bg-[#c89949] p-2 rounded-md  flex items-center font-semibold justify-center md:w-1/4"
+                      className="bg-[#1AC0BF] p-2 rounded-md  flex items-center font-semibold justify-center md:w-1/4"
                       to={"/"}
                     >
                       <AiOutlineArrowLeft size={18} className="mr-2 h-5 w-5" />

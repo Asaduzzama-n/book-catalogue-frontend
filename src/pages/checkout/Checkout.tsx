@@ -1,3 +1,3 @@
 export default function Checkout() {
-  return <div>checkout</div>;
+  return <div className="h-screen">checkout</div>;
 }
