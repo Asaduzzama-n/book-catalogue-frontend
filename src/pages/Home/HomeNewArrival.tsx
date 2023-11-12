@@ -6,7 +6,11 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { dummy } from "../../../public/dummyData";
 
-export default function HomeNewArrival() {
+interface IProps {
+  handleAddToCart: (message: string) => void;
+}
+
+export default function HomeNewArrival({ handleAddToCart }: IProps) {
   return (
     <div className="text-center ">
       <div className="text-center ">
@@ -24,12 +28,19 @@ export default function HomeNewArrival() {
           >
             {dummy.map((data, index) => (
               <div key={index} className="text-center  ">
-                <img
-                  className="h-[400px] mx-auto"
-                  src={data?.img}
-                  alt={data?.title}
-                />
-                <Button className="bg-[#232F3E] text-[#C89949] hover:bg-[#C89949] hover:text-[#232F3E] mt-5">
+                <Link to={`/details/${data.title}`}>
+                  <img
+                    className="h-[400px] mx-auto"
+                    src={data?.img}
+                    alt={data?.title}
+                  />
+                </Link>
+                <Button
+                  onClick={() => {
+                    handleAddToCart(data?.title);
+                  }}
+                  className="bg-[#232F3E] text-[#C89949] hover:bg-[#C89949] hover:text-[#232F3E] mt-5"
+                >
                   <AiOutlineShoppingCart className="mr-2" size={20} />
                   ADD TO CART
                 </Button>

@@ -5,13 +5,11 @@ import { Button } from "@/components/ui/button";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { dummy } from "../../../public/dummyData";
-import { showToast } from "@/utils/carousel/customToast/CustomToast";
+interface IProps {
+  handleAddToCart: (message: string) => void;
+}
 
-export default function HomeBestSeller() {
-  const handleAddToCart = (message: string) => {
-    showToast(message.slice(0, 15) + "...");
-  };
-
+export default function HomeBestSeller({ handleAddToCart }: IProps) {
   return (
     <div className="text-center ">
       <div className="text-center p-5">
@@ -36,7 +34,7 @@ export default function HomeBestSeller() {
                 />
                 <Button
                   onClick={() => {
-                    handleAddToCart("This is book");
+                    handleAddToCart(data?.title);
                   }}
                   className="bg-[#232F3E] text-[#C89949] hover:bg-[#C89949] hover:text-[#232F3E] mt-5"
                 >

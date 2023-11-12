@@ -7,12 +7,24 @@ import {
 } from "@/components/ui/sheet";
 import economicsCat from "../../assets/images/economicsCat.png";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { HiMinus, HiOutlinePlus } from "react-icons/hi";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { AiOutlineClose, AiOutlineArrowLeft } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { QuantityButton } from "@/components/shared/button/QuantityButton";
 
 export function CartSheet() {
+  const [quantity, setQuantity] = useState<number>(1);
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
   return (
     <div>
       <Sheet key={"bottom"}>
@@ -24,7 +36,7 @@ export function CartSheet() {
             ></AiOutlineShoppingCart>
           </div>
         </SheetTrigger>
-        <SheetContent className="md:w-3/4 mx-auto " side={"bottom"}>
+        <SheetContent className="w-full md:w-3/4 mx-auto " side={"bottom"}>
           <div className="mb-20 mt-5">
             <div className="flex flex-col lg:flex-row">
               {/* Left Section - Product Information */}
@@ -59,19 +71,13 @@ export function CartSheet() {
                       </td>
                       <td>
                         {/* Quantity with plus and minus buttons */}
-                        <div className="flex flex-col md:flex-row  items-center justify-between md:border lg:w-1/2 mx-auto">
-                          <button className="bg-[#c8994933] p-1 md:p-2 hover:bg-[#232F3E] hover:text-[#C89949]">
-                            <HiMinus className="" size={25}></HiMinus>
-                          </button>
-                          <div>
-                            <span className="mx-4 text-lg font-medium">1</span>
-                          </div>
-                          <button className="bg-[#c8994933] p-1 md:p-2 hover:bg-[#232F3E] hover:text-[#C89949]">
-                            <HiOutlinePlus
-                              className=" "
-                              size={25}
-                            ></HiOutlinePlus>
-                          </button>
+
+                        <div className="flex items-center justify-center">
+                          <QuantityButton
+                            quantity={quantity}
+                            onIncrease={handleIncrease}
+                            onDecrease={handleDecrease}
+                          />
                         </div>
                       </td>
                       <td className="text-center">$5000.00</td>

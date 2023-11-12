@@ -3,6 +3,7 @@
 import { toast } from "react-toastify";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { CartSheet } from "@/pages/cart/CartSheet";
 
 const CustomToast = ({ message }: any) => {
   return (
@@ -14,16 +15,15 @@ const CustomToast = ({ message }: any) => {
         <p className="text-md ">{message}</p>
         <p className="text-sm font-semibold">Added to your cart.</p>
       </div>
-      <div className="border">
-        <div className="p-1 hover:bg-[#232F3E]">
-          <Link className="font-semibold text-sm text-[#C89949] " to={"/cart"}>
-            View Cart
-          </Link>
-        </div>
-        <hr />
-        <div className="p-1 hover:bg-[#C89949]">
+      <div className="border-l p-3 rounded-md hover:bg-[#232F3E]">
+        {/* <div className="p-1 hover:bg-[#232F3E]">
+          <CartSheet></CartSheet>
+        </div> */}
+        {/* <hr /> */}
+
+        <div className="">
           <Link
-            className="font-semibold text-sm text-[#232F3E] "
+            className="font-semibold text-sm text-[#C89949] "
             to={"/checkout"}
           >
             Checkout
