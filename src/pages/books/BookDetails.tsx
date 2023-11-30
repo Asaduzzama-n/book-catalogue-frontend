@@ -9,8 +9,6 @@ import BookMetaData from "./BookMetaData";
 import BookInfo from "./BookInfo";
 import RelatedBooks from "./RelatedBooks";
 import { ReaderSheet } from "@/components/shared/reader/readerSheet";
-import { CartSheet } from "../cart/CartSheet";
-import { SearchSheet } from "@/components/shared/navSheets/SearchSheet";
 export default function BookDetails() {
   const breadcrumbPaths = [
     { label: "Shop", url: "/shop" },

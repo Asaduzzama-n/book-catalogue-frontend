@@ -9,6 +9,7 @@ import { MdElectricBolt } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import type { NavItem, Rendition, Contents } from "epubjs";
 import useLocalStorageState from "use-local-storage-state";
+import { SelectionSheet } from "./selectionSheet";
 
 type ITheme = "light" | "dark";
 type ITextSelection = {
@@ -99,33 +100,12 @@ export function ReaderSheet() {
           </button>
         </SheetTrigger>
         <SheetContent className="min-h-screen " side={"top"}>
-          <div className="border border-stone-400 bg-white min-h-[100px] p-2 rounded">
-            <h2 className="font-bold mb-1">Selections</h2>
-            <ul className="grid grid-cols-1 divide-y divide-stone-400 border-t border-stone-400 -mx-2">
-              {selections.map(({ text, cfiRange }, i) => (
-                <li key={i} className="p-2">
-                  <span>{text}</span>
-                  <button
-                    className="underline hover:no-underline text-sm mx-1"
-                    onClick={() => {
-                      rendition?.display(cfiRange);
-                    }}
-                  >
-                    Show
-                  </button>
-
-                  <button
-                    className="underline hover:no-underline text-sm mx-1"
-                    onClick={() => {
-                      rendition?.annotations.remove(cfiRange, "highlight");
-                      setSelections(selections.filter((item, j) => j !== i));
-                    }}
-                  >
-                    Remove
-                  </button>
-                </li>
-              ))}
-            </ul>
+          <div>
+            <SelectionSheet
+              rendition={rendition}
+              setSelections={setSelections}
+              selections={selections}
+            ></SelectionSheet>
           </div>
           <div className="" style={{ height: "100vh", width: "100%" }}>
             <div className="">
@@ -177,7 +157,7 @@ export function ReaderSheet() {
                   }
                 });
 
-                _rendition.themes.fontSize(largeText ? "130%" : "100%");
+                _rendition.themes.fontSize(largeText ? "130%" : "110%");
               }}
             ></ReactReader>
           </div>
