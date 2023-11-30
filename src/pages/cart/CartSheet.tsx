@@ -10,33 +10,34 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { AiOutlineClose, AiOutlineArrowLeft } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { QuantityButton } from "@/components/shared/button/QuantityButton";
+// import { useState } from "react";
+// import { QuantityButton } from "@/components/shared/button/QuantityButton";
 
 export function CartSheet() {
-  const [quantity, setQuantity] = useState<number>(1);
+  // const [quantity, setQuantity] = useState<number>(1);
 
-  const handleIncrease = () => {
-    setQuantity(quantity + 1);
-  };
+  // const handleIncrease = () => {
+  //   setQuantity(quantity + 1);
+  // };
 
-  const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
+  // const handleDecrease = () => {
+  //   if (quantity > 1) {
+  //     setQuantity(quantity - 1);
+  //   }
+  // };
+
   return (
     <div>
       <Sheet key={"bottom"}>
         <SheetTrigger asChild>
-          <div className=" p-2 bg-[#ededed] rounded-full">
+          <div className=" p-2 bg-[#F0F3F7] rounded-full">
             <AiOutlineShoppingCart
               size={26}
               color="#232F3E"
             ></AiOutlineShoppingCart>
           </div>
         </SheetTrigger>
-        <SheetContent className="w-full md:w-3/4 mx-auto " side={"bottom"}>
+        <SheetContent className="w-full md:w-3/4 mx-auto" side={"bottom"}>
           <div className="mb-20 mt-5">
             <div className="flex flex-col lg:flex-row">
               {/* Left Section - Product Information */}
@@ -50,7 +51,7 @@ export function CartSheet() {
                   <thead className="border">
                     <tr className="">
                       <th>Book</th>
-                      <th>Quantity</th>
+                      {/* <th>Quantity</th> */}
                       <th>Subtotal</th>
                       <th>Action</th>
                     </tr>
@@ -66,20 +67,22 @@ export function CartSheet() {
                             alt="Book"
                             className=" w-20 h-20 object-cover"
                           />
-                          <p className="font-medium">Product Name</p>
+                          <p className="font-medium">
+                            Product Name Product Name Product Name
+                          </p>
                         </div>
                       </td>
-                      <td>
-                        {/* Quantity with plus and minus buttons */}
+                      {/* <td> */}
+                      {/* Quantity with plus and minus buttons */}
 
-                        <div className="flex items-center justify-center">
+                      {/* <div className="flex items-center justify-center">
                           <QuantityButton
                             quantity={quantity}
                             onIncrease={handleIncrease}
                             onDecrease={handleDecrease}
                           />
-                        </div>
-                      </td>
+                        </div> */}
+                      {/* </td> */}
                       <td className="text-center">$5000.00</td>
                       <td className="text-center">
                         <button>
@@ -105,10 +108,10 @@ export function CartSheet() {
               </div>
 
               {/* Right Section - Order Total */}
-              <div className="lg:w-1/4 lg:ml-4 mt-8 lg:mt-0">
+              <div className="lg:w-1/4 lg:ml-4 mt-8 lg:mt-0 ">
                 <h2 className="text-2xl font-semibold ">Order Total</h2>
                 {/* Order total details */}
-                <div className="border p-4 mt-5">
+                <div className="border p-4 mt-5 rounded-md">
                   <div className="flex justify-between mb-2">
                     <span className="text-lg font-medium">Subtotal:</span>
                     <span className="text-lg font-medium">$50.00</span>
