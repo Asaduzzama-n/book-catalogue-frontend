@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <div className="">
+    <div className="max-w-[1440px] mx-auto">
       <ToastContainer></ToastContainer>
       <Main></Main>
     </div>

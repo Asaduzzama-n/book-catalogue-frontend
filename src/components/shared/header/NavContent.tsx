@@ -22,7 +22,7 @@ export default function NavContent() {
                 <h2 className="font-bold mb-2 border-b-2 border-black">
                   ACADEMIC & NON FICTION
                 </h2>
-                <ul className="grid grid-cols-1 lg:grid-cols-3 gap-1">
+                <ul className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
                   {category
                     .filter((item) => item.group === "ACADEMIC & NON FICTION")
                     .map((component) => (
@@ -104,7 +104,7 @@ export default function NavContent() {
             Authors
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-[#ededed] p-2 rounded-md">
+        <NavigationMenuItem className="my-5 inline-block md:hidden lg:inline-block md:mx-5 hover:bg-[#ededed] p-2 rounded-md">
           <Link className="text-lg" to="/best-sellers">
             Best sellers
           </Link>

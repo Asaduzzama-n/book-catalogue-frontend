@@ -45,7 +45,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
           </div>
 
           <div className="grid  items-center gap-1.5 my-2">
-            <Label htmlFor="email">Password</Label>
+            <Label htmlFor="password">Password</Label>
             <Input
               type="password"
               className=""

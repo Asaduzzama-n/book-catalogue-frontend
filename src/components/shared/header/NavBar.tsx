@@ -11,9 +11,9 @@ import { CartSheet } from "@/pages/cart/CartSheet";
 
 export default function NavBar() {
   return (
-    <nav className=" w-full sticky top-0  z-50 bg-white m-auto ">
-      <div className="h-[60px] lg:w-4/5  mx-auto flex items-center justify-around md:justify-between">
-        <div className=" flex items-center w-4/6  md:w-3/4   md:justify-start">
+    <nav className=" w-full sticky top-0  z-50 bg-white  ">
+      <div className="h-[60px]  flex items-center justify-between">
+        <div className=" flex items-center">
           <div className="md:hidden">
             <NavMenuSheet />
           </div>
