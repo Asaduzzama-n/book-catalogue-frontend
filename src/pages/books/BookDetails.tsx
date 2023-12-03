@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import BookMetaData from "./BookMetaData";
 import BookInfo from "./BookInfo";
 import RelatedBooks from "./RelatedBooks";
-import { ReaderSheet } from "@/components/shared/reader/readerSheet";
+import { ReaderSheet } from "@/components/shared/reader/ReaderSheet";
 export default function BookDetails() {
   const breadcrumbPaths = [
     { label: "Shop", url: "/shop" },
