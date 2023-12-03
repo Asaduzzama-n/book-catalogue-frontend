@@ -12,14 +12,14 @@ export default function NavContent() {
   return (
     <div>
       <NavigationMenu className="false md:flex items-center justify-between list-none ">
-        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-[#ededed] p-2 rounded-md">
+        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-secondary p-2 rounded-md">
           <NavigationMenuTrigger className="text-lg">
             Books
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="absolute left-0 w-full bg-white mt-6 md:mt-4  text-black shadow-md p-4 z-10">
+          <NavigationMenuContent className="absolute left-0 w-full light:bg-white dark:bg-[#030712] mt-6 md:mt-4   shadow-md p-4 z-10">
             <div className="md:flex justify-between lg:w-4/5 mx-auto max-h-80 overflow-y-auto">
               <div className="">
-                <h2 className="font-bold mb-2 border-b-2 border-black">
+                <h2 className="font-bold mb-2 border-b-2 light:border-black dark:border-white">
                   ACADEMIC & NON FICTION
                 </h2>
                 <ul className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
@@ -28,7 +28,7 @@ export default function NavContent() {
                     .map((component) => (
                       <li key={component.title}>
                         <Link
-                          className="hover:border-b-2 border-black"
+                          className="hover:border-b-2 light:border-black dark:border-white "
                           to={component.href}
                         >
                           {component.title}
@@ -38,7 +38,7 @@ export default function NavContent() {
                 </ul>
               </div>
               <div>
-                <h2 className="font-bold mb-2 border-b-2 border-black">
+                <h2 className="font-bold mb-2 border-b-2 light:border-black dark:border-white">
                   LANGUAGE, LOVE & LITERATURE
                 </h2>
                 <ul>
@@ -49,7 +49,7 @@ export default function NavContent() {
                     .map((component) => (
                       <li key={component.title}>
                         <Link
-                          className="hover:border-b-2 border-black"
+                          className="hover:border-b-2 light:border-black dark:border-white"
                           to={component.href}
                         >
                           {component.title}
@@ -59,7 +59,7 @@ export default function NavContent() {
                 </ul>
               </div>
               <div>
-                <h2 className="font-bold mb-2 border-b-2 border-black">
+                <h2 className="font-bold mb-2 border-b-2 light:border-black dark:border-white">
                   CHILDREN'S BOOKS
                 </h2>
                 <ul>
@@ -68,7 +68,7 @@ export default function NavContent() {
                     .map((component) => (
                       <li key={component.title}>
                         <Link
-                          className="hover:border-b-2 border-black"
+                          className="hover:border-b-2 light:border-black dark:border-white"
                           to={component.href}
                         >
                           {component.title}
@@ -78,7 +78,7 @@ export default function NavContent() {
                 </ul>
               </div>
               <div>
-                <h2 className="font-bold mb-2 border-b-2 border-black">
+                <h2 className="font-bold mb-2 border-b-2 light:border-black dark:border-white">
                   UPL SERIES
                 </h2>
                 <ul>
@@ -87,7 +87,7 @@ export default function NavContent() {
                     .map((component) => (
                       <li key={component.title}>
                         <Link
-                          className="hover:border-b-2 border-black"
+                          className="hover:border-b-2 light:border-black dark:border-white"
                           to={component.href}
                         >
                           {component.title}
@@ -99,21 +99,21 @@ export default function NavContent() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-[#ededed] p-2 rounded-md">
+        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-secondary p-2 rounded-md">
           <Link className="text-lg" to="/authors">
             Authors
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem className="my-5 inline-block md:hidden lg:inline-block md:mx-5 hover:bg-[#ededed] p-2 rounded-md">
+        <NavigationMenuItem className="my-5 inline-block md:hidden lg:inline-block md:mx-5 hover:bg-secondary p-2 rounded-md">
           <Link className="text-lg" to="/best-sellers">
             Best sellers
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-[#ededed] p-2 rounded-md">
+        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-secondary p-2 rounded-md">
           <NavigationMenuTrigger className="text-lg ">
             Conversations
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="absolute  mt-2 bg-white shadow-md p-4 z-10">
+          <NavigationMenuContent className="absolute  mt-2 dark:bg-[#030712] light:bg-white shadow-md p-4 z-10">
             <ul className="">
               <li>
                 <Link to="/event">Event</Link>

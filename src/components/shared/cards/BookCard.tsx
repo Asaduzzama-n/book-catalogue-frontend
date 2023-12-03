@@ -13,11 +13,11 @@ export default function BookCard(props: any) {
             src={data.img}
             alt="book"
           />
-          <button className="absolute bottom-0 left-0 right-0 md:opacity-0 transition-all duration-300 group-hover:opacity-100 bg-primary p-2 w-full text-white font-medium hover:bg-secondary hover:text-black">
+          <button className="absolute bottom-0 left-0 right-0 md:opacity-0 transition-all duration-300 group-hover:opacity-100 bg-primary p-2 w-full text-white  font-medium hover:bg-secondary ">
             Read Now
           </button>
         </Link>
-        <button className="absolute top-2 right-2 md:opacity-0 rounded-full transition-all duration-300 group-hover:opacity-100 bg-primary p-2 text-white font-medium hover:bg-secondary hover:text-black">
+        <button className="absolute top-2 right-2 md:opacity-0 rounded-full transition-all duration-300 group-hover:opacity-100 bg-primary p-2 text-white  font-medium hover:bg-secondary ">
           <IoEyeOutline />
         </button>
       </div>

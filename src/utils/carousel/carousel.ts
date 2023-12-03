@@ -5,15 +5,15 @@ export const responsive = {
     items: 5,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 992 },
+    breakpoint: { max: 3000, min: 1025 },
     items: 4,
   },
   tablet: {
-    breakpoint: { max: 992, min: 768 },
-    items: 2,
+    breakpoint: { max: 1024, min: 640 },
+    items: 3,
   },
   mobile: {
-    breakpoint: { max: 576, min: 0 },
+    breakpoint: { max: 640, min: 0 },
     items: 1,
   },
 };

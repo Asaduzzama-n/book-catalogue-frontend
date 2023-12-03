@@ -29,7 +29,7 @@ export function SelectionSheet({
     <div>
       <Sheet key={"right"}>
         <SheetTrigger asChild>
-          <button className="bg-[#232F3E] text-white font-medium p-1 md:p-2 hover:bg-[#232F3E] w-32  h-10 border hover:text-[#C89949] flex items-center justify-center">
+          <button className="bg-primary text-white font-medium p-1 md:p-2  w-32  h-10 border  flex items-center justify-center">
             Selected Items
           </button>
         </SheetTrigger>
@@ -43,7 +43,7 @@ export function SelectionSheet({
                 </>
               )}
               {selections?.map(({ text, cfiRange }: ITextSelection, i: any) => (
-                <li key={i} className="p-2 bg-[#F0F3F7] my-4 rounded-md">
+                <li key={i} className="p-2  my-4 rounded-md">
                   {text.length > 200 ? (
                     <span>{text.substring(0, 200) + "..."}</span>
                   ) : (
@@ -51,7 +51,7 @@ export function SelectionSheet({
                   )}
                   <br />
                   <button
-                    className="text-sm bg-[#232F3E] text-white px-2 rounded-md"
+                    className="text-sm bg-primary w-16 text-white hover:bg-secondary hover:text-black px-2 rounded-md"
                     onClick={() => {
                       rendition?.display(cfiRange);
                       SheetCloseRef.current?.click();
@@ -60,7 +60,7 @@ export function SelectionSheet({
                     Show
                   </button>
                   <button
-                    className="text-sm bg-red-500 text-white px-2 rounded-md mx-2"
+                    className="text-sm bg-red-500 hover:bg-secondary hover:text-black w-16 text-white px-2 rounded-md mx-2"
                     onClick={() => {
                       rendition?.annotations.remove(cfiRange, "highlight");
                       setSelections(selections.filter((_, j) => j !== i));
@@ -68,6 +68,7 @@ export function SelectionSheet({
                   >
                     Remove
                   </button>
+                  <hr className="my-2" />
                 </li>
               ))}
             </ul>

@@ -21,7 +21,7 @@ export default function Home() {
       <div className="md:w-4/5 mx-auto my-10">
         <HomeNewArrival handleAddToCart={handleAddToCart}></HomeNewArrival>
       </div>
-      <div className="mx-auto my-10 bg-[#ededed]">
+      <div className=" my-10">
         <HomeBestSeller handleAddToCart={handleAddToCart}></HomeBestSeller>
       </div>
 

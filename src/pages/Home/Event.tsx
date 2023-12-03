@@ -43,10 +43,10 @@ export default function Event() {
           <div>
             <SwiperSlide className="">
               <Link to={""}>
-                <div className=" h-[250px] bg-[#ededed] rounded-md flex justify-between p-5 hover:translate-y-2 tra">
+                <div className=" h-[250px] light:bg-[#ededed] rounded-md flex justify-between p-5 hover:translate-y-2 tra">
                   <div className="w-2/3">
                     <p className="text-lg font-medium">{data?.title}</p>
-                    <hr className="h-1 w-4/5 bg-[#232F3E] rounded-md" />
+                    <hr className="h-1 w-4/5 light:bg-[#232F3E] dark:bg-white rounded-md" />
                     <p className="mt-2">
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                       Enim, hic!

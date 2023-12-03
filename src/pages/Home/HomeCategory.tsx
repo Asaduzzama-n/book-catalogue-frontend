@@ -9,7 +9,9 @@ export default function HomeCategory() {
   return (
     <div className="grid grid-cols-2 gap-20 p-10">
       <div className="">
-        <h2 className="text-[#232F3E] font-medium text-4xl">CATEGORIES</h2>
+        <h2 className="light:text-[#232F3E] font-medium text-4xl">
+          CATEGORIES
+        </h2>
         <p className="my-10 text-lg font-sans ">
           A pioneer in academic and scholarly publishing in Bangladesh, UPL has
           cultivated the work of some of Bangladesh’s best scholars and literary
@@ -23,9 +25,7 @@ export default function HomeCategory() {
           worldwide. Our literary collection also presents the works of
           brilliant writers in the poetry, fiction and short story genres.
         </p>
-        <Button className="bg-[#232F3E] text-[#C89949] hover:bg-[#C89949] hover:text-[#232F3E]">
-          DOWNLOAD CATALOGUE
-        </Button>
+        <Button className="light:bg-primary ">DOWNLOAD CATALOGUE</Button>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="block w-full h-full overflow-hidden">
