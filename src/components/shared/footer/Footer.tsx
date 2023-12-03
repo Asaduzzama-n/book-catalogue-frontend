@@ -1,5 +1,6 @@
 import NewsLetter from "@/components/forms/NewsLetter";
-import logo from "../../../assets/logo/logo.png";
+import logo from "../../../assets/logo/logo-2.png";
+
 import { Link } from "react-router-dom";
 import { TfiFacebook } from "react-icons/tfi";
 import { FaXTwitter } from "react-icons/fa6";
@@ -7,7 +8,7 @@ import { BiLogoLinkedin, BiPhone } from "react-icons/bi";
 
 export default function Footer() {
   return (
-    <div className=" bg-[#232F3E] p-5 ">
+    <div className=" bg-[#232F3E] py-2">
       <div className="text-center my-5">
         <div className="mb-5">
           <h2 className="text-xl font-medium text-white">
@@ -137,7 +138,7 @@ export default function Footer() {
       </div>
       <hr />
 
-      <div className="my-5">
+      <div className="mt-5">
         <p className="text-white text-center mb-10 font-medium">
           © 2023 Asaduzzaman All Rights Reserved
         </p>
