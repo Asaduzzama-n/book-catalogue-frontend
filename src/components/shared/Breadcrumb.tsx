@@ -9,8 +9,8 @@ interface BreadcrumbProps {
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ paths }) => {
   return (
-    <nav className="flex items-center text-lg  light:text-[#232F3E]">
-      <Link to="/" className="flex items-center hover:text-secondary">
+    <nav className="flex items-center text-lg  dark:text-white text-primary">
+      <Link to="/" className="flex items-center hover:opacity-90">
         <AiOutlineHome className="mr-1" />
         Home
       </Link>
@@ -18,7 +18,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({ paths }) => {
         <React.Fragment key={index}>
           {/* <AiOutlineRight className="mx-1" /> */}
           <p className="mx-1">/</p>
-          <Link className="hover:text-secondary " to={path.url}>
+          <Link className="hover:opacity-90 " to={path.url}>
             {path.label}
           </Link>
         </React.Fragment>

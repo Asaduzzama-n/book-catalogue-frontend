@@ -5,7 +5,7 @@ import { ThemeProvider } from "./components/theme/theme-provider";
 
 function App() {
   return (
-    <div className="max-w-[1440px] mx-auto">
+    <div className="">
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
         <ToastContainer></ToastContainer>
         <Main></Main>

@@ -26,11 +26,11 @@ export default function NewsLetter() {
             {...register("gmail")}
             type="text"
             className="w-full py-2 pl-3 pr-10  outline-none focus:outline-none"
-            placeholder="Gmail..."
+            placeholder="Email..."
           />
           <button
             type="submit"
-            className="absolute inset-y-0 right-0 flex items-center  bg-[#c89949] px-4"
+            className="absolute inset-y-0 right-0 flex items-center text-white bg-primary dark:bg-secondary px-4"
           >
             <FaTelegramPlane className="h-5 w-5 " />
           </button>

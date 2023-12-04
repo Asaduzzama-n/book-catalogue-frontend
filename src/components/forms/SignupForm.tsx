@@ -33,7 +33,7 @@ const SignupForm: React.FC<SignupFormProps> = () => {
     <div className="">
       <div className="min-h-[80vh]  flex justify-center items-center">
         <form className="md:w-1/5" onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-[#232F3E] lg:text-4xl text-center mb-10">
+          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-primary dark:text-white lg:text-4xl text-center mb-10">
             SIGN UP
           </h1>
           <div className="grid  items-center gap-1.5">
@@ -80,17 +80,20 @@ const SignupForm: React.FC<SignupFormProps> = () => {
 
           <div className="flex justify-center mt-4">
             <button
-              className="bg-[#232F3E] w-full h-10 text-lg font-medium rounded-md cursor-pointer text-white"
+              className="bg-primary hover:opacity-90 w-full h-10 text-lg font-medium rounded-md cursor-pointer text-white"
               type="submit"
             >
               SIGN UP
             </button>
           </div>
           <div className="flex justify-center mt-2">
-            <Link className="text-[#232F3E]" to={"/login"}>
+            <Link
+              className="text-primary hover:opacity-90 dark:text-white"
+              to={"/login"}
+            >
               Already Have an account?
             </Link>
-            {/* <p className="leading-7 [&:not(:first-child)] text-[#232F3E]">
+            {/* <p className="leading-7 [&:not(:first-child)] text-primary dark:text-white">
               Reset password
             </p> */}
           </div>

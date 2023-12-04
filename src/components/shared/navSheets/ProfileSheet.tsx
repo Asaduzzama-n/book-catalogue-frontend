@@ -27,7 +27,7 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
           {avatar ? (
             <Avatar>
               <AvatarImage
-                className="h-10 rounded-full mr-2"
+                className="h-8 rounded-full mt-2"
                 src="https://github.com/shadcn.png"
               />
               <AvatarFallback>

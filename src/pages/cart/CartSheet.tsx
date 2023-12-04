@@ -30,11 +30,8 @@ export function CartSheet() {
     <div>
       <Sheet key={"bottom"}>
         <SheetTrigger asChild>
-          <div className=" p-2 bg-[#F0F3F7] rounded-full">
-            <AiOutlineShoppingCart
-              size={26}
-              color="#232F3E"
-            ></AiOutlineShoppingCart>
+          <div className=" p-2 bg-customBG dark:bg-secondary rounded-full">
+            <AiOutlineShoppingCart size={20}></AiOutlineShoppingCart>
           </div>
         </SheetTrigger>
         <SheetContent className="w-full md:w-3/4 mx-auto" side={"bottom"}>

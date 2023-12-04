@@ -31,7 +31,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
     <div className="">
       <div className="min-h-[80vh]  flex justify-center items-center">
         <form className="md:w-1/5" onSubmit={handleSubmit(onSubmit)}>
-          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-[#232F3E] lg:text-4xl text-center mb-10">
+          <h1 className="scroll-m-20 text-3xl font-extrabold tracking-tight text-primary dark:text-white lg:text-4xl text-center mb-10">
             LOGIN
           </h1>
           <div className="grid  items-center gap-1.5">
@@ -63,17 +63,20 @@ const LoginForm: React.FC<LoginFormProps> = () => {
 
           <div className="flex justify-center mt-4">
             <button
-              className="bg-[#232F3E] w-full h-10 text-lg font-medium rounded-md cursor-pointer text-white"
+              className="bg-primary w-full h-10 text-lg font-medium rounded-md cursor-pointer hover:opacity-90  text-white"
               type="submit"
             >
               LOGIN
             </button>
           </div>
           <div className="flex justify-between mt-2">
-            <Link className="text-[#232F3E]" to={"/signup"}>
+            <Link
+              className="text-primary hover:opacity-90  dark:text-white"
+              to={"/signup"}
+            >
               Didn't Have an account?
             </Link>
-            <p className="leading-7 [&:not(:first-child)] text-[#232F3E]">
+            <p className="leading-7 [&:not(:first-child)] hover:opacity-90  text-primary dark:text-white">
               Reset password
             </p>
           </div>
@@ -83,7 +86,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
               <blockquote className="mb-2  italic">-or-</blockquote>
             </div>
           </div>
-          <button className="bg-[#F0F3F7] w-full h-10 text-lg font-semibold rounded-md text-[#232F3E]">
+          <button className="bg-primary w-full h-10 text-lg font-semibold rounded-md hover:opacity-90  text-white">
             Log in with Google
           </button>
         </form>

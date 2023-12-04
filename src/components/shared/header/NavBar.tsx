@@ -22,8 +22,8 @@ import { useTheme } from "@/components/theme/theme-provider";
 export default function NavBar() {
   const { setTheme } = useTheme();
   return (
-    <nav className=" w-full sticky top-0  z-50 dark:bg-[#030712] bg-white">
-      <div className="h-[60px]  flex items-center justify-between">
+    <nav className=" w-full sticky top-0  z-50 dark:bg-primary bg-white md:px-5 ">
+      <div className="h-[60px]  flex items-center justify-between md:container">
         <div className=" flex items-center">
           <div className="md:hidden">
             <NavMenuSheet />
@@ -40,14 +40,14 @@ export default function NavBar() {
         </div>
 
         <div className="flex w-2/6 md:w-1/4  items-center justify-between md:justify-end ">
-          <div>
+          <div className="">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="rounded-full w-10 h-10 ">
+                <button className="rounded-full w-10 h-10 flex items-center bg-customBG dark:bg-secondary justify-center">
                   <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                   <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                   <span className="sr-only">Toggle theme</span>
-                </Button>
+                </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={() => setTheme("light")}>

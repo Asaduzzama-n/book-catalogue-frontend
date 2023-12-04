@@ -13,11 +13,11 @@ interface IProps {
 export default function HomeNewArrival({ handleAddToCart }: IProps) {
   return (
     <div className="my-10">
-      <div className="flex flex-col justify-center items-center md:flex-row md:justify-between mx-10 my-5">
+      <div className="flex flex-col justify-center items-center md:flex-row md:justify-between my-5">
         <h2 className="scroll-m-20 my-4   text-3xl  font-semibold tracking-tight first:mt-0">
           NEW ARRIVAL
         </h2>
-        <div className="flex bg-primary px-2 w-32 h-10 rounded-lg items-center">
+        <div className="flex bg-primary px-2 w-32 h-10 rounded-lg items-center hover:opacity-90">
           <Link className="mx-2 text-sm font-medium text-white" to={`/shop`}>
             VIEW MORE
           </Link>

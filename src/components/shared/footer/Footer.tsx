@@ -8,27 +8,25 @@ import { BiLogoLinkedin, BiPhone } from "react-icons/bi";
 
 export default function Footer() {
   return (
-    <div className=" light:bg-[#232F3E] py-2">
+    <div className=" bg-customBG text-primary dark:bg-[#678aec31] dark:text-white p-5">
       <div className="text-center my-5">
-        <div className="mb-5">
-          <h2 className="text-xl font-medium text-white">
-            GET THE LATEST NEWS FROM US!
-          </h2>
-          <p className="text-lg  text-white">We Never Spam Your Inbox!</p>
+        <div className="mb-5 text-primary dark:text-white">
+          <h2 className="text-xl font-bold ">GET THE LATEST NEWS FROM US!</h2>
+          <p className="text-md">We Never Spam Your Inbox!</p>
         </div>
         <NewsLetter></NewsLetter>
       </div>
 
-      <div className="grid lg:grid-cols-3 md:gap-16 my-5 md:w-3/4 mx-auto">
-        <div className="md:mx-auto">
+      <div className="grid lg:grid-cols-3 md:gap-20 my-5 md:w-3/4 mx-auto ">
+        <div className="">
           <img className="h-20 mb-4" src={logo} alt="" />
-          <div className="md:w-1/2 text-white text-lg">
+          <div className="md:w-1/2  text-md">
             <p className="my-2">
               The University Press Limited 74/B/1 Green Road, RH Home Center 2nd
               Floor, Suit# 232-239, Farmgate Dhaka 1215
             </p>
             <p className="my-2">Trade License No. TRAD/DNCC/075880/2022</p>
-            <ul className="text-lg">
+            <ul className="text-md">
               <li className="flex items-center md:justify-around">
                 <BiPhone></BiPhone> (+8802) 44815288
               </li>
@@ -42,10 +40,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:gap-12 my-5 md:my-0">
+        <div className="grid grid-cols-2 md:gap-20 my-5 md:my-0 ">
           <div className="md:mt-20">
-            <h2 className="text-xl font-medium text-[#c89949] w-14 ">MENU</h2>
-            <ul className="text-white my-2 text-lg">
+            <h2 className="text-xl font-bold text-primary dark:text-white w-14 ">
+              MENU
+            </h2>
+            <ul className=" my-2 text-md">
               <li>
                 <Link to="/books">Books</Link>
               </li>
@@ -72,11 +72,9 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="md:mt-20">
-            <h2 className="text-xl font-medium text-[#c89949] w-14 ">
-              CATEGORIES
-            </h2>
-            <ul className="text-white my-2 text-lg">
+          <div className="md:mt-20 text-primary dark:text-white">
+            <h2 className="text-xl font-bold  w-14 ">CATEGORIES</h2>
+            <ul className=" my-2 text-md">
               <li>
                 <Link to="/road-to-bangladesh">Road to Bangladesh</Link>
               </li>
@@ -105,10 +103,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div>
-          <div className="md:mt-20">
-            <h2 className="text-xl font-medium text-[#c89949] w-14 ">OTHERS</h2>
-            <ul className="text-white my-2 text-lg">
+        <div className="md:ml-60">
+          <div className="md:mt-20 text-primary dark:text-white ">
+            <h2 className="text-xl font-bold">OTHERS</h2>
+            <ul className=" my-2 text-md">
               <li>
                 <Link to="/catalog-download">Download Catalogs</Link>
               </li>
@@ -136,10 +134,10 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <hr />
+      <hr className="" />
 
       <div className="mt-5">
-        <p className="text-white text-center mb-10 font-medium">
+        <p className="text-primary dark:text-white text-center  font-bold">
           © 2023 Asaduzzaman All Rights Reserved
         </p>
       </div>

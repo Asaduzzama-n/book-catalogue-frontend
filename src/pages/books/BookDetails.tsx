@@ -74,14 +74,14 @@ export default function BookDetails() {
                 />
               </div> */}
               <div>
-                <button className="bg-[#C89949] text-white font-medium p-1 md:p-2  w-32  h-10 hover:text-[#232F3E] border flex items-center justify-center">
+                <button className="bg-primary dark:bg-customBG text-white dark:text-primary  font-medium p-1 md:p-2  w-32  h-10 hover:opacity-80 border flex items-center justify-center">
                   <AiOutlineShoppingCart className="mr-2"></AiOutlineShoppingCart>
                   Add to Cart
                 </button>
               </div>
               <div>
                 <Link to={"/checkout"}>
-                  <button className="bg-[#232F3E] text-white font-medium p-1 md:p-2 hover:bg-[#232F3E] w-32  h-10 border hover:text-[#C89949] flex items-center justify-center">
+                  <button className="bg-primary dark:bg-customBG text-white dark:text-primary  font-medium p-1 md:p-2 hover:opacity-80 w-32  h-10 border  flex items-center justify-center">
                     <MdElectricBolt className="mr-2"></MdElectricBolt>
                     Buy Now
                   </button>
@@ -95,7 +95,7 @@ export default function BookDetails() {
             {/* Wishlist Section */}
             <hr className="mt-5" />
             <div className="flex justify-between ">
-              <button className="flex items-center my-2 text-[#C89949] hover:text-[#232F3E] text-lg">
+              <button className="flex items-center my-2 text-primary dark:text-white hover:opacity-80 text-lg">
                 <AiOutlineHeart className="mr-2"></AiOutlineHeart>
                 Add To Wishlist
               </button>
@@ -107,7 +107,7 @@ export default function BookDetails() {
 
       {/* Book Description and Author Description Section */}
 
-      <div className="my-10">
+      <div className="my-10 bg-customBG dark:bg-primary p-5 rounded-md">
         <BookMetaData></BookMetaData>
       </div>
       <div>

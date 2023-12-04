@@ -18,7 +18,7 @@ export default function HomeCarousel() {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper h-60  md:h-[400px]"
+        className="mySwiper h-60  md:h-[400px] "
       >
         <SwiperSlide>
           <img

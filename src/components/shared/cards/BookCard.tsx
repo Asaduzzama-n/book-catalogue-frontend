@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function BookCard(props: any) {
   const { data } = props;
   return (
-    <div className="mx-auto w-52 relative group">
+    <div className="mx-auto max-w-fit relative group">
       <div className="relative">
         <Link to={`/details/:${data.title}`}>
           {" "}

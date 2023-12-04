@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 export default function HomeCategory() {
   return (
-    <div className="grid grid-cols-2 gap-20 p-10">
+    <div className="grid grid-cols-2 gap-20 mt-10">
       <div className="">
         <h2 className="light:text-[#232F3E] font-medium text-4xl">
           CATEGORIES
@@ -25,7 +25,7 @@ export default function HomeCategory() {
           worldwide. Our literary collection also presents the works of
           brilliant writers in the poetry, fiction and short story genres.
         </p>
-        <Button className="light:bg-primary ">DOWNLOAD CATALOGUE</Button>
+        <Button className="bg-primary  text-white">DOWNLOAD CATALOGUE</Button>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div className="block w-full h-full overflow-hidden">

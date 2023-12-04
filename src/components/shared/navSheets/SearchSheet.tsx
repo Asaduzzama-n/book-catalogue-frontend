@@ -14,8 +14,8 @@ export function SearchSheet() {
     <div>
       <Sheet key={"top"}>
         <SheetTrigger asChild>
-          <div className=" p-2 bg-[#ededed] rounded-full">
-            <HiOutlineSearch size={26} color="#232F3E"></HiOutlineSearch>
+          <div className=" p-2 bg-customBG dark:bg-secondary rounded-full">
+            <HiOutlineSearch size={20}></HiOutlineSearch>
           </div>
         </SheetTrigger>
         <SheetContent className="md:w-2/4 mx-auto" side={"top"}>
