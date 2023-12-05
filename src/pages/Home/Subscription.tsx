@@ -3,7 +3,7 @@ import backgroundSvg2 from "../../assets/svgs/undraw_mathematics_-4-otb.svg";
 
 export default function Subscription() {
   return (
-    <div className="flex justify-between min-h-[300px] bg-customBG dark:bg-primary  items-center relative p-4">
+    <div className="flex justify-between min-h-[300px] bg-customBG dark:bg-primary  items-center relative p-4 ">
       <div className="w-1/3 hidden md:inline-block">
         <img
           className="h-60  absolute -bottom-0 left-6"

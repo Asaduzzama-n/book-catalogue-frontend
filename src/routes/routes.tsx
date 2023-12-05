@@ -1,6 +1,8 @@
 import App from "@/App";
 import LoginForm from "@/components/forms/LoginFrom";
 import SignupForm from "@/components/forms/SignupForm";
+import NotFound from "@/pages/404";
+import Authors from "@/pages/author/Authors";
 import BookDetails from "@/pages/books/BookDetails";
 import Checkout from "@/pages/checkout/Checkout";
 import Home from "@/pages/home/Home";
@@ -29,12 +31,20 @@ const routes = createBrowserRouter([
         element: <Shop></Shop>,
       },
       {
+        path: "/authors",
+        element: <Authors></Authors>,
+      },
+      {
         path: "/checkout",
         element: <Checkout></Checkout>,
       },
       {
         path: "/details/:id",
         element: <BookDetails></BookDetails>,
+      },
+      {
+        path: "/*",
+        element: <NotFound></NotFound>,
       },
     ],
   },

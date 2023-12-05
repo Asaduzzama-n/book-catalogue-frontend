@@ -16,7 +16,7 @@ export default function NavContent() {
           <NavigationMenuTrigger className="text-md">
             Books
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="absolute left-0 w-full bg-white dark:bg-primary mt-6 md:mt-4   shadow-md p-4 z-10">
+          <NavigationMenuContent className="absolute left-0 w-full bg-customBG dark:bg-primary mt-6 md:mt-4   shadow-md p-4 z-10">
             <div className="md:flex justify-between lg:w-4/5 mx-auto max-h-80 overflow-y-auto">
               <div className="">
                 <h2 className="font-bold mb-2 border-b-2 border-primary dark:border-white">

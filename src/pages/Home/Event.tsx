@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function Event() {
   return (
-    <div className="w-4/5  mx-auto mb-10">
+    <div className="my-10">
       <div className="text-center text-3xl font-medium mb-10">
         <h2>EVENTS AND NEWS</h2>
       </div>

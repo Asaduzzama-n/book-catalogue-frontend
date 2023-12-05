@@ -22,14 +22,14 @@ export default function Home() {
       <div className=" py-5 container">
         <HomeNewArrival handleAddToCart={handleAddToCart}></HomeNewArrival>
       </div>
-      <div className="py-5">
+      <div className="py-5 ">
         <Subscription></Subscription>
       </div>
       <div className="container">
         <HomeBestSeller handleAddToCart={handleAddToCart}></HomeBestSeller>
       </div>
 
-      <div className="py-5">
+      <div className="py-5 container">
         <Event></Event>
       </div>
     </div>

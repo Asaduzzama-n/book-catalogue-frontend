@@ -22,7 +22,7 @@ import { useTheme } from "@/components/theme/theme-provider";
 export default function NavBar() {
   const { setTheme } = useTheme();
   return (
-    <nav className=" w-full sticky top-0  z-50 dark:bg-primary bg-white md:px-5 ">
+    <nav className=" w-full sticky top-0  z-50 dark:bg-primary bg-customBG md:px-5 ">
       <div className="h-[60px]  flex items-center justify-between md:container">
         <div className=" flex items-center">
           <div className="md:hidden">
