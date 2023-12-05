@@ -89,7 +89,7 @@ export function ReaderSheet() {
     <div>
       <Sheet key={"top"}>
         <SheetTrigger asChild>
-          <button className="bg-[#232F3E] text-white font-medium p-1 md:p-2 hover:bg-[#232F3E] w-32  h-10 border hover:text-[#C89949] flex items-center justify-center">
+          <button className="bg-primary text-white font-medium p-1 md:p-2 hover:opacity-90 w-32  h-10 border  flex items-center justify-center">
             <MdElectricBolt className="mr-2"></MdElectricBolt>
             Read Now
           </button>

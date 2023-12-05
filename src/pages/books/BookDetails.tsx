@@ -3,8 +3,6 @@ import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { MdElectricBolt } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-// import { useState } from "react";
-// import { QuantityButton } from "@/components/shared/button/QuantityButton";
 import BookMetaData from "./BookMetaData";
 import BookInfo from "./BookInfo";
 import RelatedBooks from "./RelatedBooks";
@@ -14,18 +12,6 @@ export default function BookDetails() {
     { label: "Shop", url: "/shop" },
     { label: "Details", url: "/details" },
   ];
-
-  // const [quantity, setQuantity] = useState<number>(1);
-
-  // const handleIncrease = () => {
-  //   setQuantity(quantity + 1);
-  // };
-
-  // const handleDecrease = () => {
-  //   if (quantity > 1) {
-  //     setQuantity(quantity - 1);
-  //   }
-  // };
 
   return (
     <div className="w-full mx-auto md:w-4/5">
@@ -45,9 +31,7 @@ export default function BookDetails() {
                 new Arrival
               </h2>
             </div>
-
             {/* Book info Section */}
-
             <div className="my-5">
               <h1 className="text-3xl font-semibold">
                 Book Name....................
@@ -62,23 +46,8 @@ export default function BookDetails() {
               <h3 className="text-lg font-medium">Price</h3>
             </div>
             <hr />
-
             {/* Button Section */}
-
             <div className="grid grid-cols-2 gap-y-4 gap-x-4 md:grid-cols-3 justify-start mt-5 ">
-              {/* <div>
-                <QuantityButton
-                  quantity={quantity}
-                  onIncrease={handleIncrease}
-                  onDecrease={handleDecrease}
-                />
-              </div> */}
-              <div>
-                <button className="bg-primary dark:bg-customBG text-white dark:text-primary  font-medium p-1 md:p-2  w-32  h-10 hover:opacity-80 border flex items-center justify-center">
-                  <AiOutlineShoppingCart className="mr-2"></AiOutlineShoppingCart>
-                  Add to Cart
-                </button>
-              </div>
               <div>
                 <Link to={"/checkout"}>
                   <button className="bg-primary dark:bg-customBG text-white dark:text-primary  font-medium p-1 md:p-2 hover:opacity-80 w-32  h-10 border  flex items-center justify-center">
@@ -87,12 +56,11 @@ export default function BookDetails() {
                   </button>
                 </Link>
               </div>
-              {/* Reader Section */}
+
               <div>
                 <ReaderSheet></ReaderSheet>
               </div>
             </div>
-            {/* Wishlist Section */}
             <hr className="mt-5" />
             <div className="flex justify-between ">
               <button className="flex items-center my-2 text-primary dark:text-white hover:opacity-80 text-lg">
@@ -114,6 +82,7 @@ export default function BookDetails() {
         <BookInfo></BookInfo>
       </div>
       <div className="my-10">
+        <h1 className="text-3xl font-semibold">Related Books</h1>
         <RelatedBooks></RelatedBooks>
       </div>
     </div>
