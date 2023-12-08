@@ -94,7 +94,7 @@ export function ReaderSheet() {
             Read Now
           </button>
         </SheetTrigger>
-        <SheetContent className="min-h-screen " side={"top"}>
+        <SheetContent className="min-h-screen container" side={"top"}>
           <div>
             <SelectionSheet
               rendition={rendition}
