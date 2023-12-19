@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import p from "../../assets/images/politicalScienceCat.png";
-import { dummy } from "../../../public/dummyData";
-import BookCard from "@/components/shared/cards/BookCard";
+import { books } from "../../../public/dummyData";
 export default function AuthorDetails() {
   const { id } = useParams();
 
@@ -22,8 +21,12 @@ export default function AuthorDetails() {
         </div>
       </div>
       <div className="my-10 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 ">
-        {dummy.map((data, index) => (
-          <BookCard data={data} key={index}></BookCard>
+        {books.map((book, index) => (
+          // <BookCard book={book} key={index}></BookCard>
+          <div>
+            {book.title}
+            <div>{index}</div>
+          </div>
         ))}
       </div>
     </div>

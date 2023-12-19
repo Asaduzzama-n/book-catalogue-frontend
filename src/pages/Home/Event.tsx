@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
-import { dummy } from "../../../public/dummyData";
+import { books } from "../../../public/dummyData";
 import { Link } from "react-router-dom";
 
 export default function Event() {
@@ -39,13 +39,13 @@ export default function Event() {
         modules={[Pagination, Autoplay]}
         className="mySwiper"
       >
-        {dummy.map((data) => (
+        {books.map((book) => (
           <div>
             <SwiperSlide className="">
               <Link to={""}>
                 <div className=" h-[250px] light:bg-[#ededed] rounded-md flex justify-between p-5 hover:translate-y-2 tra">
                   <div className="w-2/3">
-                    <p className="text-lg font-medium">{data?.title}</p>
+                    <p className="text-lg font-medium">{book?.title}</p>
                     <hr className="h-1 w-4/5 light:bg-[#232F3E] dark:bg-white rounded-md" />
                     <p className="mt-2">
                       Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -55,7 +55,7 @@ export default function Event() {
                   <div className="w-2/6">
                     <img
                       className="w-full h-full rounded-md"
-                      src={data?.img}
+                      src={book?.coverImg?.url}
                       alt=""
                     />
                   </div>

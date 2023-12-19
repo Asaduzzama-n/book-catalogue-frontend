@@ -3,13 +3,10 @@ import HomeCategory from "./HomeCategory";
 import HomeNewArrival from "./HomeNewArrival";
 import HomeBestSeller from "./HomeBestSeller";
 import Event from "./Event";
-import { showToast } from "@/utils/carousel/customToast/CustomToast";
 import Subscription from "./Subscription";
+import { books } from "../../../public/dummyData";
 
 export default function Home() {
-  const handleAddToCart = (message: string) => {
-    showToast(message.slice(0, 15) + "...");
-  };
   return (
     <div className="">
       <div>
@@ -20,13 +17,13 @@ export default function Home() {
         <HomeCategory></HomeCategory>
       </div>
       <div className=" py-5 container">
-        <HomeNewArrival handleAddToCart={handleAddToCart}></HomeNewArrival>
+        <HomeNewArrival books={books}></HomeNewArrival>
       </div>
       <div className="py-5 ">
         <Subscription></Subscription>
       </div>
       <div className="container">
-        <HomeBestSeller handleAddToCart={handleAddToCart}></HomeBestSeller>
+        <HomeBestSeller books={books}></HomeBestSeller>
       </div>
 
       <div className="py-5 container">

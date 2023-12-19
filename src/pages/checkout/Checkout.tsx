@@ -3,19 +3,19 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { checkoutData } from "../../../public/dummyData";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useAppSelector } from "@/redux/hooks";
 
 export default function Checkout() {
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  console.log(isChecked);
+
+  const { books, total } = useAppSelector((state) => state.cart);
 
   return (
     <div className="md:h-screen md:w-4/5 mx-auto my-10 ">
@@ -29,28 +29,26 @@ export default function Checkout() {
                   Books
                 </TableHead>
                 <TableHead className="font-medium text-lg">Title</TableHead>
-                <TableHead className="font-medium text-lg text-center">
-                  Quantity
-                </TableHead>
                 <TableHead className="text-right font-medium text-lg">
                   Price
                 </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody className="w-full">
-              {checkoutData?.map((data) => (
-                <TableRow key={data?.title}>
+              {books?.map((book) => (
+                <TableRow key={book?.title}>
                   <TableCell>
-                    <img className="h-16 w-12" src={data?.img} alt="book" />
+                    <img
+                      className="h-16 w-12"
+                      src={book?.coverImg?.url}
+                      alt="book"
+                    />
                   </TableCell>
                   <TableCell className="font-medium text-lg">
-                    {data?.title}
-                  </TableCell>
-                  <TableCell className="font-medium text-lg text-center">
-                    {data?.quantity}
+                    {book?.title}
                   </TableCell>
                   <TableCell className="text-right font-medium text-lg">
-                    {data?.price}
+                    {book?.price}
                   </TableCell>
                 </TableRow>
               ))}
@@ -61,16 +59,12 @@ export default function Checkout() {
           <div className="border w-full p-5 mb-5">
             <div className="flex justify-between items-center my-2  p-2">
               <h3 className="font-semibold text-lg">Subtotal:</h3>
-              <h3 className="font-semibold text-lg">$ 1000</h3>
-            </div>
-            <div className="flex justify-between items-center my-2  p-2">
-              <h3 className="font-semibold text-lg">Tax:</h3>
-              <h3 className="font-semibold text-lg">$ 10</h3>
+              <h3 className="font-semibold text-lg">{total}</h3>
             </div>
             <hr />
             <div className="flex justify-between items-center my-2  p-2">
               <h3 className="font-semibold text-lg">Total:</h3>
-              <h3 className="font-semibold text-lg">$ 1010</h3>
+              <h3 className="font-semibold text-lg">{total}</h3>
             </div>
           </div>
           <h2 className="text-3xl font-medium text-[#232F3E]">PAY WITH</h2>

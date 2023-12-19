@@ -2,15 +2,16 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { responsive } from "@/utils/carousel/carousel";
 import { Link } from "react-router-dom";
-import { dummy } from "../../../public/dummyData";
 import BookCard from "@/components/shared/cards/BookCard";
 import { FaArrowRight } from "react-icons/fa";
+import { IBook } from "@/types/globalTypes";
 
 interface IProps {
-  handleAddToCart: (message: string) => void;
+  books: IBook[];
 }
 
-export default function HomeNewArrival({ handleAddToCart }: IProps) {
+export default function HomeNewArrival(props: IProps) {
+  const { books } = props;
   return (
     <div className="my-10">
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-between my-5">
@@ -32,8 +33,8 @@ export default function HomeNewArrival({ handleAddToCart }: IProps) {
           // infinite={true}
           responsive={responsive}
         >
-          {dummy.map((data, index) => (
-            <BookCard data={data} key={index}></BookCard>
+          {books.map((book, index) => (
+            <BookCard book={book} key={index}></BookCard>
           ))}
         </Carousel>
       </div>

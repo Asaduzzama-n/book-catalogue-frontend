@@ -2,14 +2,15 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { responsive } from "@/utils/carousel/carousel";
 import { Link } from "react-router-dom";
-import { dummy } from "../../../public/dummyData";
 import BookCard from "@/components/shared/cards/BookCard";
 import { FaArrowRight } from "react-icons/fa";
+import { IBook } from "@/types/globalTypes";
+
 interface IProps {
-  handleAddToCart: (message: string) => void;
+  books: IBook[];
 }
 
-export default function HomeBestSeller({ handleAddToCart }: IProps) {
+export default function HomeBestSeller({ books }: IProps) {
   return (
     <div className="my-10">
       <div className="">
@@ -28,11 +29,10 @@ export default function HomeBestSeller({ handleAddToCart }: IProps) {
           className="z-0"
           removeArrowOnDeviceType={["tablet", "mobile"]}
           swipeable={true}
-          // infinite={true}
           responsive={responsive}
         >
-          {dummy.map((data, index) => (
-            <BookCard data={data} key={index}></BookCard>
+          {books.map((book, index) => (
+            <BookCard book={book} key={index}></BookCard>
           ))}
         </Carousel>
       </div>
