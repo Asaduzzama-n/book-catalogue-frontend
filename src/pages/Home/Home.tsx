@@ -4,9 +4,11 @@ import HomeNewArrival from "./HomeNewArrival";
 import HomeBestSeller from "./HomeBestSeller";
 import Event from "./Event";
 import Subscription from "./Subscription";
-import { books } from "../../../public/dummyData";
+import { useGetBooksQuery } from "@/redux/features/books/booksApi";
+import Loader from "@/components/shared/Loader";
 
 export default function Home() {
+  const { data, isLoading } = useGetBooksQuery(undefined);
   return (
     <div className="">
       <div>
@@ -17,13 +19,24 @@ export default function Home() {
         <HomeCategory></HomeCategory>
       </div>
       <div className=" py-5 container">
-        <HomeNewArrival books={books}></HomeNewArrival>
+        {isLoading ? (
+          <Loader></Loader>
+        ) : (
+          <HomeNewArrival
+            books={data?.data}
+            isLoading={isLoading}
+          ></HomeNewArrival>
+        )}
       </div>
       <div className="py-5 ">
         <Subscription></Subscription>
       </div>
       <div className="container">
-        <HomeBestSeller books={books}></HomeBestSeller>
+        {isLoading ? (
+          <Loader></Loader>
+        ) : (
+          <HomeBestSeller books={data?.data}></HomeBestSeller>
+        )}
       </div>
 
       <div className="py-5 container">

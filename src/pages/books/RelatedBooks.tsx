@@ -1,28 +1,41 @@
-import BookCard from "@/components/shared/cards/BookCard";
-import { books } from "../../../public/dummyData";
-import { useAppDispatch } from "@/redux/hooks";
 import { IBook } from "@/types/globalTypes";
-import { addToCart } from "@/redux/features/cart/cartSlice";
-import { showToast } from "@/utils/carousel/customToast/CustomToast";
+import { useGetBooksQuery } from "@/redux/features/books/booksApi";
+import Carousel from "react-multi-carousel";
+import { relatedBookResponsive } from "@/utils/carousel/carousel";
+import Loader from "@/components/shared/Loader";
+import RelatedBooksCard from "@/components/shared/cards/RelatedBooksCard";
 
-export default function RelatedBooks() {
-  const dispatch = useAppDispatch();
+interface IProps {
+  book: IBook;
+}
 
-  const handleAddToCart = (book: IBook) => {
-    dispatch(addToCart(book));
-    showToast(book.title.slice(0, 15) + "...");
-  };
+export default function RelatedBooks(props: IProps) {
+  const { data, isLoading } = useGetBooksQuery(undefined);
+  const books: IBook[] = data?.data.filter(
+    (data: IBook) =>
+      data?.category === props?.book?.category ||
+      data?.author?.author1?.name?.firstName ===
+        props?.book?.author?.author1?.name
+  );
+
   return (
-    <div className="min-h-screen">
-      <div className="my-10 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 ">
-        {books.map((book, index) => (
-          <BookCard
-            handleAddToCart={handleAddToCart}
-            book={book}
-            key={index}
-          ></BookCard>
-        ))}
-      </div>
+    <div className=" my-5">
+      <Carousel
+        className="z-0"
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+        swipeable={true}
+        responsive={relatedBookResponsive}
+      >
+        {isLoading ? (
+          <div className="flex justify-center items-center h-20">
+            <Loader></Loader>
+          </div>
+        ) : (
+          books?.map((book, index) => (
+            <RelatedBooksCard book={book} key={index}></RelatedBooksCard>
+          ))
+        )}
+      </Carousel>
     </div>
   );
 }

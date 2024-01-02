@@ -3,6 +3,7 @@ import { useAppDispatch } from "@/redux/hooks";
 import { IBook } from "@/types/globalTypes";
 import { IoEyeOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import BookRating from "../BookRating";
 
 interface IProps {
   book: IBook;
@@ -12,9 +13,9 @@ export default function BookCard(props: IProps) {
   const { book } = props;
   const dispatch = useAppDispatch();
   return (
-    <div className="relative mx-auto w-3/5 md:w-4/5 group bg-customBG dark:bg-primary rounded-md ">
+    <div className="relative mx-auto w-3/5 md:w-4/5 group  rounded-md ">
       <div className="relative  h-[400px] md:h-[350px] ">
-        <Link to={`/details/:${book.title}`}>
+        <Link to={`/details/${book.id}`}>
           {" "}
           <img
             className="w-full h-full rounded-t-md cursor-pointer group-hover:opacity-80"
@@ -35,9 +36,9 @@ export default function BookCard(props: IProps) {
       <div className="mt-1 p-2">
         <div className="text-start">
           <p className="font-medium">{book.title}</p>
-          <div className="flex">
-            <span>4.4</span>
-            <span className="ml-5">{book.price}</span>
+          <BookRating rating={4.5} total={21}></BookRating>
+          <div className="">
+            <span className="">{book.price}</span>
           </div>
         </div>
       </div>
