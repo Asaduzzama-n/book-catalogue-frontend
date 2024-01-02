@@ -5,24 +5,32 @@ import { Link } from "react-router-dom";
 import BookCard from "@/components/shared/cards/BookCard";
 import { FaArrowRight } from "react-icons/fa";
 import { IBook } from "@/types/globalTypes";
+import Loader from "@/components/shared/Loader";
 
 interface IProps {
   books: IBook[];
+  isLoading: boolean;
 }
 
 export default function HomeNewArrival(props: IProps) {
-  const { books } = props;
+  const { books, isLoading } = props;
+  if (isLoading) {
+    <Loader></Loader>;
+  }
   return (
     <div className="my-10">
       <div className="flex flex-col justify-center items-center md:flex-row md:justify-between my-5">
         <h2 className="scroll-m-20 my-4   text-3xl  font-semibold tracking-tight first:mt-0">
           NEW ARRIVAL
         </h2>
-        <div className="flex bg-primary px-2 w-32 h-10 rounded-lg items-center hover:opacity-90">
-          <Link className="mx-2 text-sm font-medium text-white" to={`/shop`}>
+        <div className="flex px-2 w-32 h-10 rounded-lg items-center hover:opacity-90">
+          <Link
+            className="mx-2 text-sm  font-medium text-primary dark:text-white"
+            to={`/shop`}
+          >
             VIEW MORE
           </Link>
-          <FaArrowRight className="text-white" />
+          <FaArrowRight size={12} className="text-primary dark:text-white" />
         </div>
       </div>
       <div className=" ">
@@ -33,7 +41,7 @@ export default function HomeNewArrival(props: IProps) {
           // infinite={true}
           responsive={responsive}
         >
-          {books.map((book, index) => (
+          {books?.map((book, index) => (
             <BookCard book={book} key={index}></BookCard>
           ))}
         </Carousel>

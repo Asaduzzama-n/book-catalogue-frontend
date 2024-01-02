@@ -10,7 +10,9 @@ interface IProps {
   books: IBook[];
 }
 
-export default function HomeBestSeller({ books }: IProps) {
+export default function HomeBestSeller(props: IProps) {
+  const { books } = props;
+
   return (
     <div className="my-10">
       <div className="">
@@ -18,11 +20,14 @@ export default function HomeBestSeller({ books }: IProps) {
           <h2 className="scroll-m-20 text-3xl my-4 font-semibold tracking-tight first:mt-0">
             BEST SELLER
           </h2>
-          <div className="flex bg-primary px-2 w-32 h-10 rounded-lg items-center hover:opacity-90">
-            <Link className="mx-2 text-sm font-medium text-white" to={`/shop`}>
+          <div className="flex px-2 w-32 h-10 rounded-lg items-center hover:opacity-90">
+            <Link
+              className="mx-2 text-sm  font-medium text-primary dark:text-white"
+              to={`/shop`}
+            >
               VIEW MORE
             </Link>
-            <FaArrowRight className="text-white" />
+            <FaArrowRight size={12} className="text-primary dark:text-white" />
           </div>
         </div>
         <Carousel
@@ -31,7 +36,7 @@ export default function HomeBestSeller({ books }: IProps) {
           swipeable={true}
           responsive={responsive}
         >
-          {books.map((book, index) => (
+          {books?.map((book, index) => (
             <BookCard book={book} key={index}></BookCard>
           ))}
         </Carousel>

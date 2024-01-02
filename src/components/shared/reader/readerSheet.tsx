@@ -11,14 +11,21 @@ import type { NavItem, Rendition, Contents } from "epubjs";
 import useLocalStorageState from "use-local-storage-state";
 import { SelectionSheet } from "./SelectionSheet";
 import { useTheme } from "@/components/theme/theme-provider";
+import { IBook } from "@/types/globalTypes";
 
-type ITheme = "light" | "dark" | "system";
+// type ITheme = "light" | "dark" | "system";
 type ITextSelection = {
   text: string;
   cfiRange: string;
 };
 
-export function ReaderSheet() {
+interface IProps {
+  book: IBook;
+}
+
+export function ReaderSheet(props: IProps) {
+  const { book } = props;
+
   const [selections, setSelections] = useState<ITextSelection[]>([]);
   const [page, setPage] = useState("");
   const [rendition, setRendition] = useState<Rendition | undefined>(undefined);
@@ -110,8 +117,8 @@ export function ReaderSheet() {
             </>
             <div className="flex justify-end">{page}</div>
             <ReactReader
-              url="https://react-reader.metabits.no/files/alice.epub"
-              title="Healing Her Heart"
+              url={book?.bookUrl?.url}
+              title={book?.title}
               readerStyles={
                 theme === "dark" ? darkReaderTheme : lightReaderTheme
               }
