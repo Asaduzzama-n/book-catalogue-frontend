@@ -10,16 +10,9 @@ import { useGetSingleBookQuery } from "@/redux/features/books/booksApi";
 import { IBook } from "@/types/globalTypes";
 import { useAppDispatch } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cart/cartSlice";
-import DisplayRating from "./DisplayRating";
-import DisplayReview from "./DisplayReview";
-// import { useState } from "react";
+import DisplayReviewAndRating from "./review/DisplayReviewAndRating";
+
 export default function BookDetails() {
-  // const [rating, setRating] = useState(0);
-
-  // const handleRatingChange = (newRating: number) => {
-  //   setRating(newRating);
-  // };
-
   const breadcrumbPaths = [
     { label: "Shop", url: "/shop" },
     { label: "Details", url: "/details" },
@@ -41,9 +34,7 @@ export default function BookDetails() {
           <div>
             <div className="my-4">
               <Breadcrumb paths={breadcrumbPaths} />
-              <h2 className="bg-green-400 w-32 px-2 transform my-2">
-                new Arrival
-              </h2>
+              <h2 className=" w-32 px-2  my-2">new Arrival</h2>
             </div>
             {/* Book info Section */}
             <div className="my-5">
@@ -88,7 +79,6 @@ export default function BookDetails() {
                 <AiOutlineHeart className="mr-2"></AiOutlineHeart>
                 Add To Wishlist
               </button>
-              <div className="my-2">Share Icon will be there</div>
             </div>
           </div>
         </div>
@@ -103,44 +93,12 @@ export default function BookDetails() {
         <BookInfo book={book}></BookInfo>
       </div>
       <div className="my-10">
-        <h1 className="text-3xl font-semibold">Related Books</h1>
+        <h1 className="text-xl font-semibold">Related Books</h1>
         <RelatedBooks book={book}></RelatedBooks>
       </div>
 
-      {/* Rating Section */}
-      <hr />
-      <div className="my-5">
-        <h2 className="text-lg font-semibold my-5">
-          Rating & Book Reviews (8)
-        </h2>
-        <DisplayRating></DisplayRating>
-      </div>
-      <hr className="mb-5" />
-
-      {/* Review  Section */}
-      <div className="my-5">
-        <h2 className="text-lg font-semibold my-5">All Book Review</h2>
-        <DisplayReview></DisplayReview>
-      </div>
-      <hr className="mb-5" />
+      {/* Review and Rating Section */}
+      <DisplayReviewAndRating></DisplayReviewAndRating>
     </div>
   );
-}
-
-{
-  /* <div className="flex space-x-2">
-{[1, 2, 3, 4, 5].map((star) => (
-  <button
-    key={star}
-    onClick={() => handleRatingChange(star)}
-    className={`text-3xl ${
-      star <= rating
-        ? "text-primary"
-        : "text-gray-200 hover:text-primary"
-    } focus:outline-none`}
-  >
-    ★
-  </button>
-))}
-</div> */
 }
