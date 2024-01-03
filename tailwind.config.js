@@ -27,6 +27,7 @@ module.exports = {
         // secondary: "#232F3E",
         secondary: "#113255",
         hoverColor: "#2C3245",
+        customRED: "#BF0000",
         lightText: "#2C3245",
         darkText: "#FFFFF",
         customBG: "#F2F2F2",

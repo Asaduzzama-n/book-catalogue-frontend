@@ -47,3 +47,42 @@ export interface IBook {
   coverImg: Image;
   quickViewUrl: Image;
 }
+
+type userName = {
+  firstName: string;
+  lastName: string;
+};
+
+type image = {
+  publicId: string;
+  url: string;
+};
+
+export type IUser = {
+  name: userName;
+  email: string;
+  password: string;
+  contactNo?: string;
+  address?: string;
+  gender?: "male" | "female";
+  dateOfBirth: string;
+  image?: image;
+  role: string;
+  isSubscribe: true | false;
+};
+
+export interface IReview {
+  id: string;
+  title: string;
+  review: string;
+  book: string;
+  user: IUser;
+  rating: number;
+}
+
+export type IReviewResponse = {
+  reviews: IReview[] | null;
+  avgRating: number;
+  ratingCounts: { [key: number]: { count: number; percentage: number } };
+  total: number;
+};
