@@ -14,7 +14,16 @@ export const reviewApi = api.injectEndpoints({
       query: (id) => `/review/${id}`,
       providesTags: ["review"],
     }),
+    getReviewsWithPagination: builder.query({
+      query: ({ id, pageNumber, limit, sortBy }) =>
+        `/review/${id}?page=${pageNumber}&limit=${limit}&sortBy=${sortBy}`,
+      providesTags: ["review"],
+    }),
   }),
 });
 
-export const { useGetReviewsQuery, usePostReviewMutation } = reviewApi;
+export const {
+  useGetReviewsQuery,
+  usePostReviewMutation,
+  useGetReviewsWithPaginationQuery,
+} = reviewApi;
