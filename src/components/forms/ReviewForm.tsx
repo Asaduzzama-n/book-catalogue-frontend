@@ -55,7 +55,7 @@ export function ReviewForm() {
             <p>Title will go there</p>
             <span>By: Author Name</span>
           </div>
-          <div className="w-full md:w-3/4 p-2 font-serif bg-customBG">
+          <div className="w-full md:w-3/4 p-2 font-serif ">
             <h2 className="text-2xl mb-2">Share your thoughts</h2>
             <span>
               Tell readers what you thought by rating and reviewing this book.
@@ -87,7 +87,7 @@ export function ReviewForm() {
                 <form className="w-full" onSubmit={handleSubmit(onSubmit)}>
                   <div className="my-2">
                     <textarea
-                      className="w-full h-32 p-2 text-sm outline-none"
+                      className="w-full h-32 p-2 text-sm outline-none dark:text-primary"
                       placeholder="Tell us if you enjoyed the story. What was the author's style like? What did you like the best and the least? Who would you recommend this book for"
                       {...register("review", {
                         required: "Comment is required",
@@ -102,7 +102,7 @@ export function ReviewForm() {
                   <div className="my-2">
                     <label htmlFor="title">Title *</label>
                     <input
-                      className="w-full p-2 text-sm outline-none shadow-sm mt-2"
+                      className="w-full p-2 text-sm outline-none shadow-sm mt-2 dark:text-primary"
                       placeholder="Briefly give your overall impression."
                       {...register("title", {
                         required: "Title is required",
