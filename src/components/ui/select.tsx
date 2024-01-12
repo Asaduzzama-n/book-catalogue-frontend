@@ -4,7 +4,23 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-const Select = SelectPrimitive.Root;
+type ExtendedSelectProps = React.ComponentPropsWithoutRef<
+  typeof SelectPrimitive.Root
+> & {
+  value?: string; // Add the value prop
+  onChange?: (value: string) => void;
+};
+
+const Select: React.FC<ExtendedSelectProps> = ({
+  value,
+  onChange,
+  ...props
+}) => {
+  // Your existing Select component implementation
+  return (
+    <SelectPrimitive.Root value={value} onValueChange={onChange} {...props} />
+  );
+};
 
 const SelectGroup = SelectPrimitive.Group;
 
