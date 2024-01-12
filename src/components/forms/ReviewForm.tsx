@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { usePostReviewMutation } from "@/redux/features/review/reviewsApi";
 import { useParams } from "react-router-dom";
+import { useAppDispatch } from "@/redux/hooks";
+import { setHelpful } from "@/redux/features/review/reviewSlice";
 
 type Inputs = {
   title: string;
@@ -23,6 +25,7 @@ export function ReviewForm() {
 
   const [postReview] = usePostReviewMutation();
   const { id } = useParams();
+  const dispatch = useAppDispatch();
 
   const onSubmit = (data: any) => {
     const options = {
@@ -35,6 +38,7 @@ export function ReviewForm() {
       },
     };
     postReview(options);
+    dispatch(setHelpful(false));
     reset();
     setRating(0);
   };

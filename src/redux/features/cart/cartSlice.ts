@@ -2,12 +2,12 @@ import { IBook } from "@/types/globalTypes";
 import { showToast } from "@/utils/carousel/customToast/CustomToast";
 import { createSlice } from "@reduxjs/toolkit";
 
-export interface ICart {
+export interface ICartInitialState {
   books: IBook[];
   total: number;
 }
 
-const initialState: ICart = {
+const initialState: ICartInitialState = {
   books: [],
   total: 0,
 };

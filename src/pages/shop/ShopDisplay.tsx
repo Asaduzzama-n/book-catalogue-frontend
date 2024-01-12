@@ -1,10 +1,14 @@
 import BookCard from "@/components/shared/cards/BookCard";
-import { useGetBooksQuery } from "@/redux/features/books/booksApi";
+
 import { IBook } from "@/types/globalTypes";
 import Loader from "@/components/shared/Loader";
+import { useGetFilteredBooksQuery } from "@/redux/features/shop/shopApi";
+import { useAppSelector } from "@/redux/hooks";
 
 export default function ShopDisplay() {
-  const { data, isLoading } = useGetBooksQuery(undefined);
+  // const { data, isLoading } = useGetBooksQuery(undefined);
+  const { language, category } = useAppSelector((state) => state.shop);
+  const { data, isLoading } = useGetFilteredBooksQuery({ language, category });
   const books: IBook[] = data?.data;
   return (
     <div>

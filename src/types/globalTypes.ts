@@ -78,7 +78,31 @@ export interface IReview {
   book: string;
   user: IUser;
   rating: number;
+  helpfulVotes: number;
+  unhelpfulVotes: number;
+  inappropriateCount: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
+
+export type authorName = {
+  firstName: string;
+  lastName?: string;
+};
+
+export type authorImage = {
+  publicId: string;
+  url: string;
+};
+export type IAuthor = {
+  id: string;
+  name: authorName;
+  email: string;
+  bio: string;
+  address: string;
+  bookPublished?: string;
+  image?: authorImage;
+};
 
 export type IReviewResponse = {
   reviews: IReview[] | null;

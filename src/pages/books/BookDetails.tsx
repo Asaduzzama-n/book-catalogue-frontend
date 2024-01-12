@@ -98,7 +98,9 @@ export default function BookDetails() {
       </div>
 
       {/* Review and Rating Section */}
-      <DisplayReviewAndRating></DisplayReviewAndRating>
+      <div className="mb-5">
+        <DisplayReviewAndRating></DisplayReviewAndRating>
+      </div>
     </div>
   );
 }

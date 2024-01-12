@@ -14,12 +14,16 @@ export default function DisplayReviewAndRating() {
 
   const { data } = useGetReviewsQuery(id) || {};
 
-  const { pageNumber, limit, sortBy } = useAppSelector((state) => state.review);
+  const { pageNumber, limit, sortBy, rating, sortOrder } = useAppSelector(
+    (state) => state.review
+  );
   const { data: review } = useGetReviewsWithPaginationQuery({
     id,
+    rating,
     pageNumber,
     limit,
     sortBy,
+    sortOrder,
   });
   const dispatch = useAppDispatch();
 
@@ -27,8 +31,6 @@ export default function DisplayReviewAndRating() {
 
   const incrementPageNumber = (currentPage: number) => {
     if (currentPage < numberOfPages) {
-      console.log("CLLL");
-
       dispatch(changePageNumber(currentPage + 1));
     }
   };
@@ -64,19 +66,24 @@ export default function DisplayReviewAndRating() {
         )}
       </div>
 
-      <div className="flex">
+      <div className="flex justify-end items-center font-medium">
         <div>
           <button
             onClick={() => decrementPageNumber(currentPage)}
-            className="mr-5 p-2 bg-blue-500"
+            className="mr-5 px-2 py-1 bg-customBG "
           >
             Prev
           </button>
         </div>
         <div>
+          <p>
+            {currentPage} of {numberOfPages}
+          </p>
+        </div>
+        <div>
           <button
             onClick={() => incrementPageNumber(currentPage)}
-            className="ml-5 p-2 bg-green-500"
+            className="ml-5 p-2 px-2 py-1 bg-customBG"
           >
             Next
           </button>

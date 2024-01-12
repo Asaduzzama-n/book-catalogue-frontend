@@ -7,6 +7,15 @@ interface IProps {
 
 export default function ReviewDisplaySection(props: IProps) {
   const { review } = props;
+
+  const formattedDate = review?.createdAt
+    ? new Date(review.createdAt).toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })
+    : "";
+
   return (
     <div>
       <div className="flex items-center ">
@@ -19,7 +28,7 @@ export default function ReviewDisplaySection(props: IProps) {
         <br />
         <br />
         <span className="font-serif">
-          By: {review.user.name.lastName}on 02 January, 2023
+          By: {review?.user?.name?.lastName} on {formattedDate}
         </span>
       </div>
     </div>
