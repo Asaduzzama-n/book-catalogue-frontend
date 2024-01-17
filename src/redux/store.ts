@@ -3,13 +3,16 @@ import cartReducer from "./features/cart/cartSlice";
 import reviewReducer from "./features/review/reviewSlice";
 import bookReducer from "./features/books/bookSlice";
 import shopReducer from "./features/shop/shopSlice";
+import authReducer from "./features/auth/authSlice";
 import { api } from "./api/apiSlice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import userReducer from "./features/user/userSlice";
 
 const persistConfig = {
   key: "root",
   storage,
+  whitelist: ["cart", "review", "book", "shop", "user"],
 };
 
 const rootReducer = combineReducers({
@@ -17,7 +20,9 @@ const rootReducer = combineReducers({
   review: reviewReducer,
   book: bookReducer,
   shop: shopReducer,
-  api: api.reducer,
+  user: userReducer,
+  auth: authReducer,
+  [api.reducerPath]: api.reducer,
 });
 
 const persistedReducer: Reducer = persistReducer(persistConfig, rootReducer);
@@ -26,6 +31,7 @@ export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(api.middleware),
+  devTools: true,
 });
 
 export const persistor = persistStore(store);

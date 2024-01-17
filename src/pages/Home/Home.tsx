@@ -2,7 +2,7 @@ import HomeCarousel from "./HomeCarousel";
 import HomeCategory from "./HomeCategory";
 import HomeNewArrival from "./HomeNewArrival";
 import HomeBestSeller from "./HomeBestSeller";
-import Event from "./Event";
+
 import Subscription from "./Subscription";
 import { useGetBooksQuery } from "@/redux/features/books/booksApi";
 import Loader from "@/components/shared/Loader";
@@ -38,10 +38,10 @@ export default function Home() {
           <HomeBestSeller books={data?.data}></HomeBestSeller>
         )}
       </div>
-
+      {/* 
       <div className="py-5 container">
         <Event></Event>
-      </div>
+      </div> */}
     </div>
   );
 }

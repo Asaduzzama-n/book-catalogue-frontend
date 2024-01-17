@@ -27,7 +27,7 @@ export function ReviewForm() {
   const { id } = useParams();
   const dispatch = useAppDispatch();
 
-  const onSubmit = (data: any) => {
+  const onSubmit = async (data: any) => {
     const options = {
       data: {
         rating: rating,
@@ -37,7 +37,8 @@ export function ReviewForm() {
         user: "65201a3167d8a9df18165ea8",
       },
     };
-    postReview(options);
+    const res = await postReview(options);
+    console.log("Review Post Response", res);
     dispatch(setHelpful(false));
     reset();
     setRating(0);

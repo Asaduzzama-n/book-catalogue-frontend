@@ -7,8 +7,16 @@ import { useAppSelector } from "@/redux/hooks";
 
 export default function ShopDisplay() {
   // const { data, isLoading } = useGetBooksQuery(undefined);
-  const { language, category } = useAppSelector((state) => state.shop);
-  const { data, isLoading } = useGetFilteredBooksQuery({ language, category });
+  const { language, category, minPrice, maxPrice } = useAppSelector(
+    (state) => state.shop
+  );
+
+  const { data, isLoading } = useGetFilteredBooksQuery({
+    language,
+    category,
+    minPrice,
+    maxPrice,
+  });
   const books: IBook[] = data?.data;
   return (
     <div>

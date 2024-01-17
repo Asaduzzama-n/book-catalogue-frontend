@@ -8,7 +8,7 @@ import { BiLogoLinkedin, BiPhone } from "react-icons/bi";
 
 export default function Footer() {
   return (
-    <div className=" bg-customBG text-primary dark:bg-[#678aec31] dark:text-white p-5">
+    <div className=" bg-customBG text-primary dark:bg-primary dark:text-white p-5">
       <div className="text-center my-5">
         <div className="mb-5 text-primary dark:text-white">
           <h2 className="text-xl font-bold ">GET THE LATEST NEWS FROM US!</h2>

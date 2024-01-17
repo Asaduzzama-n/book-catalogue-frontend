@@ -1,9 +1,18 @@
-import { IBook } from "@/types/globalTypes";
 import { showToast } from "@/utils/carousel/customToast/CustomToast";
 import { createSlice } from "@reduxjs/toolkit";
 
+interface ICartBooks {
+  id: string;
+  title: string;
+  price: number;
+  coverImg: {
+    publicId: string;
+    url: string;
+  };
+}
+
 export interface ICartInitialState {
-  books: IBook[];
+  books: ICartBooks[];
   total: number;
 }
 
@@ -21,10 +30,13 @@ const cartSlice = createSlice({
         (book) => book.title === action.payload.title
       );
       if (existingBook) {
-        const message = "Already added";
+        const message = "Already";
         showToast(message);
       } else {
-        state.books.push(action.payload);
+        const { title, id, coverImg, price } = action.payload;
+        const newItem = { title, price, id, coverImg };
+        state.books.push(newItem);
+        // state.books.push(action.payload);
         state.total = Number((state.total + action.payload.price).toFixed(2));
         showToast(action.payload.title.slice(0, 15) + "...");
       }

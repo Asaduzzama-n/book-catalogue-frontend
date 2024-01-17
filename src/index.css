@@ -9,7 +9,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #0e2a47; /* Set the color for the thumb */
+  /* background-color: #0e2a47; Set the color for the thumb */
+  background-color: #596fb7; /* Set the color for the thumb */
 }
 
 ::-webkit-scrollbar-track {

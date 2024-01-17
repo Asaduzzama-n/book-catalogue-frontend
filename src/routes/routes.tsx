@@ -10,6 +10,13 @@ import Home from "@/pages/home/Home";
 import Shop from "@/pages/shop/Shop";
 import { createBrowserRouter } from "react-router-dom";
 
+import PrivateRoute from "./PrivateRoute";
+import MyAccount from "@/pages/dashboard/userDashboard/MyAccount";
+import MyOrder from "@/pages/dashboard/userDashboard/MyOrder/MyOrder";
+import MyBooks from "@/pages/dashboard/userDashboard/MyBooks";
+import AccountSetting from "@/pages/dashboard/userDashboard/AccountSetting";
+import MyProfile from "@/pages/dashboard/userDashboard/MyProfile";
+
 const routes = createBrowserRouter([
   {
     path: "/",
@@ -30,6 +37,46 @@ const routes = createBrowserRouter([
       {
         path: "/best-sellers",
         element: <Shop></Shop>,
+      },
+      {
+        path: "/account",
+        element: (
+          <PrivateRoute>
+            <MyAccount></MyAccount>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/purchase-history",
+        element: (
+          <PrivateRoute>
+            <MyOrder></MyOrder>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/library/books",
+        element: (
+          <PrivateRoute>
+            <MyBooks></MyBooks>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/account/settings",
+        element: (
+          <PrivateRoute>
+            <AccountSetting></AccountSetting>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/shop",
