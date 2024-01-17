@@ -2,7 +2,11 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+// import { createUser, updateUserProfile } from "@/redux/features/auth/authSlice";
+// import { useAppDispatch } from "@/redux/hooks";
+import { toast } from "react-toastify";
+import { useUserSignupMutation } from "@/redux/features/auth/authApi";
 
 interface SignupFormProps {
   // Add any additional props if needed
@@ -24,10 +28,80 @@ const SignupForm: React.FC<SignupFormProps> = () => {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit = (data: any) => {
-    // Handle login logic here
-    console.log(data);
+  // const dispatch = useAppDispatch();
+  const [userSignup] = useUserSignupMutation();
+  const navigate = useNavigate();
+  const onSubmit = async (data: any) => {
+    try {
+      // const result = await dispatch(
+      //   createUser({ email: data.email, password: data.password })
+      // );
+      // if (createUser.fulfilled.match(result)) {
+      //   //Update User profile
+      //   handleProfileUpdate(data?.name, data?.email);
+      //   console.log(result.payload);
+      //   toast.success(`Account created successfully`);
+      // } else if (createUser.rejected.match(result)) {
+      //   const errorMessage = result.error.message;
+      //   const toastMessage = errorMessage!
+      //     .split("/")[1]
+      //     .slice(0, -2)
+      //     .toUpperCase();
+      //   toast.error(toastMessage);
+      // }
+      const options = {
+        data: {
+          name: {
+            firstName: data?.name,
+          },
+          email: data?.email,
+          password: data?.password,
+          role: "user",
+        },
+      };
+
+      const res = await userSignup(options).unwrap();
+      if (res?.success) {
+        toast.success("Account created successfully!");
+        navigate("/login");
+      }
+    } catch (error) {
+      //@ts-ignore
+      console.log(error?.data?.message);
+      //@ts-ignore
+      toast.error(error?.data?.message);
+    }
   };
+
+  // const handleProfileUpdate = (name: string, email: string) => {
+  //   const profile = { displayName: name };
+
+  //   dispatch(updateUserProfile(profile))
+  //     .then(() => saveUserInfo(name, email))
+  //     .catch((error) => console.error(error));
+  // };
+
+  // const saveUserInfo = (name: string, email: string) => {
+  //   const user = {
+  //     name: {
+  //       firstName: name.includes(" ") ? name.split(" ")[0] : name,
+  //       lastName: name.includes(" ") ? name.split(" ")[1] : "",
+  //     },
+  //     email: email,
+  //     role: "user",
+  //   };
+  //   fetch("http://localhost:5000/api/v1/auth/signup", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(user),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //     });
+  // };
 
   return (
     <div className="">
@@ -43,7 +117,9 @@ const SignupForm: React.FC<SignupFormProps> = () => {
               placeholder="Email"
               {...register("email", { required: "Email is required" })}
             />
-            {errors.email && <span>{errors?.email?.message}</span>}
+            {errors.email && (
+              <span className="text-error">{errors?.email?.message}</span>
+            )}
           </div>
 
           <div className="grid  items-center gap-1.5 my-2">

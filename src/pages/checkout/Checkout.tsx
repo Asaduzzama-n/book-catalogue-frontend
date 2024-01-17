@@ -35,7 +35,7 @@ export default function Checkout() {
               </TableRow>
             </TableHeader>
             <TableBody className="w-full">
-              {books?.map((book) => (
+              {books?.map((book: any) => (
                 <TableRow key={book?.title}>
                   <TableCell>
                     <img
@@ -82,7 +82,7 @@ export default function Checkout() {
             <div className="items-top flex space-x-2">
               <Checkbox
                 onClick={() => setIsChecked(!isChecked)}
-                className="secondary"
+                className="secondary text-white"
                 id="terms1"
               />
               <div className="grid gap-1.5 leading-none">
@@ -100,7 +100,7 @@ export default function Checkout() {
           </div>
           <Button
             disabled={!isChecked}
-            className=" bg-[#232F3E] w-full my-5 hover:bg-[#C89949] hover:text-[#232F3E] font-bold"
+            className=" bg-primary w-full my-5  text-white font-bold"
           >
             PAY
           </Button>

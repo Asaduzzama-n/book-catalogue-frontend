@@ -3,15 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface IShopInitialState {
   language?: string | null;
   category?: string | null;
-  minPrice?: number | null;
-  maxPrice?: number | null;
+  minPrice?: number;
+  maxPrice?: number;
+  isFilterApplied?: boolean;
 }
 
 const initialState: IShopInitialState = {
   language: null,
   category: null,
-  minPrice: null,
-  maxPrice: null,
+  minPrice: 0,
+  maxPrice: 5000,
+  isFilterApplied: false,
 };
 
 const shopSlice = createSlice({
@@ -32,8 +34,16 @@ const shopSlice = createSlice({
         state.category = action.payload;
       }
     },
+    setPriceRange: (state, action) => {
+      state.minPrice = action.payload.minPrice;
+      state.maxPrice = action.payload.maxPrice;
+    },
+    setIsFilterApplied: (state, action) => {
+      state.isFilterApplied = action.payload;
+    },
   },
 });
 
-export const { setLanguage, setCategory } = shopSlice.actions;
+export const { setLanguage, setCategory, setPriceRange, setIsFilterApplied } =
+  shopSlice.actions;
 export default shopSlice.reducer;

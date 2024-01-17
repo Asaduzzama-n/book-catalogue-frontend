@@ -100,7 +100,7 @@ export default function NavContent() {
           </NavigationMenuContent>
         </NavigationMenuItem>
         <NavigationMenuItem className="my-5 md:mx-5 hover:bg-customBG dark:hover:bg-secondary  p-2 rounded-md">
-          <Link className="text-md" to="/authors">
+          <Link className="text-md" to="/welcome">
             Authors
           </Link>
         </NavigationMenuItem>

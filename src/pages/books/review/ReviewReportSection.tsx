@@ -38,7 +38,7 @@ export default function ReviewReportSection(props: IProps) {
       };
 
       const response = await updateReviewMutation(options);
-
+      console.log("From Review Report section", response);
       dispatch(setHelpful(true));
     } catch (error) {
       console.error("Error updating review:", error);
@@ -58,6 +58,7 @@ export default function ReviewReportSection(props: IProps) {
         },
       };
       const response = await updateReviewMutation(options);
+      console.log("From Review Report section", response);
     } catch (error) {
       console.error("Error creating report:", error);
     }
@@ -81,7 +82,7 @@ export default function ReviewReportSection(props: IProps) {
           <AccordionTrigger>Was this helpful to you?</AccordionTrigger>
           <AccordionContent>
             <div className="flex space-x-4">
-              {helpful ? (
+              {!helpful ? (
                 <p className="my-1">Thanks for your feedback!</p>
               ) : (
                 <>

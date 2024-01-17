@@ -3,7 +3,7 @@ import { api } from "@/redux/api/apiSlice";
 export const shopApi = api.injectEndpoints({
   endpoints: (builder) => ({
     getFilteredBooks: builder.query({
-      query: ({ language, category }) => {
+      query: ({ language, category, minPrice, maxPrice }) => {
         let queryString = `/book/?`;
         if (language !== null) {
           queryString += `&language=${language}`;
@@ -12,8 +12,14 @@ export const shopApi = api.injectEndpoints({
         if (category !== null) {
           queryString += `&category=${category}`;
         }
+        if (minPrice !== 0) {
+          queryString += `&minPrice=${minPrice}`;
+        }
+        if (maxPrice !== 0) {
+          queryString += `&maxPrice=${maxPrice}`;
+        }
 
-        return queryString;
+        return { url: queryString, method: "GET" };
       },
     }),
   }),

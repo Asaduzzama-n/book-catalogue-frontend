@@ -6,28 +6,25 @@ export const reviewApi = api.injectEndpoints({
       query: ({ data }) => ({
         url: `/review/`,
         method: "POST",
-        body: data,
+        data,
       }),
       invalidatesTags: ["review"],
     }),
     getReviews: builder.query({
-      query: (id) => `/review/book/${id}`,
-      providesTags: ["review"],
+      query: (id) => ({ url: `/review/book/${id}`, method: "GET" }),
     }),
     updateReview: builder.mutation({
       query: ({ id, data }) => {
-        console.log("Mutation data:", data); // Log the data object
-
         return {
           url: `/review/${id}`,
           method: "PATCH",
-          body: data,
+          data: data,
         };
       },
       invalidatesTags: ["review"],
     }),
     getSingleReview: builder.query({
-      query: (id) => `/review/${id}`,
+      query: (id) => ({ url: `/review/${id}`, method: "GET" }),
     }),
     getReviewsWithPagination: builder.query({
       query: ({ id, rating, pageNumber, limit, sortBy, sortOrder }) => {
@@ -44,7 +41,7 @@ export const reviewApi = api.injectEndpoints({
           queryString += `&sortBy=${sortBy}&sortOrder=${sortOrder}`;
         }
 
-        return queryString;
+        return { url: queryString, method: "GET" };
       },
       providesTags: ["review"],
     }),

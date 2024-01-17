@@ -1,11 +1,16 @@
 import { api } from "@/redux/api/apiSlice";
 
 export const bookApi = api.injectEndpoints({
-  endpoints: (builder) => ({
-    getBooks: builder.query({ query: () => "/book" }),
-    getSingleBook: builder.query({ query: (id) => `/book/${id}` }),
-    getBooksForSearch: builder.query({
-      query: (searchKey) => `/book/?searchTerm=${searchKey}`,
+  endpoints: (build) => ({
+    getBooks: build.query({ query: () => ({ url: "/book", method: "GET" }) }),
+    getSingleBook: build.query({
+      query: (id) => ({ url: `/book/${id}`, method: "GET" }),
+    }),
+    getBooksForSearch: build.query({
+      query: (searchKey) => ({
+        url: `/book/?searchTerm=${searchKey}`,
+        method: "GET",
+      }),
     }),
   }),
 });
