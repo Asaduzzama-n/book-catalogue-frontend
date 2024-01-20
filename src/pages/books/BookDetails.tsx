@@ -1,5 +1,9 @@
 import Breadcrumb from "@/components/shared/Breadcrumb";
-import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
+import {
+  AiFillHeart,
+  AiOutlineHeart,
+  AiOutlineShoppingCart,
+} from "react-icons/ai";
 import { Link, useParams } from "react-router-dom";
 
 import BookMetaData from "./BookMetaData";
@@ -8,9 +12,16 @@ import RelatedBooks from "./RelatedBooks";
 import { ReaderSheet } from "@/components/shared/reader/ReaderSheet";
 import { useGetSingleBookQuery } from "@/redux/features/books/booksApi";
 import { IBook } from "@/types/globalTypes";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { addToCart } from "@/redux/features/cart/cartSlice";
 import DisplayReviewAndRating from "./review/DisplayReviewAndRating";
+import {
+  useAddToWishListMutation,
+  useGetWishListQuery,
+  useRemoveFromWishListMutation,
+} from "@/redux/features/user/userApi";
+import { toast } from "react-toastify";
+import { isWishListed } from "@/helpers/wishlist-helper";
 
 export default function BookDetails() {
   const breadcrumbPaths = [
@@ -22,7 +33,65 @@ export default function BookDetails() {
 
   const { id } = useParams();
   const { data } = useGetSingleBookQuery(id);
+  const { user } = useAppSelector((state) => state.user);
   const book: IBook = data?.data;
+
+  const [addToWishList] = useAddToWishListMutation();
+  const [removeFromWishList] = useRemoveFromWishListMutation();
+  const { data: wishlist } = useGetWishListQuery(user?.id as string);
+
+  // const handleAddToWishList = async (bookId: string) => {
+  //   const options = {
+  //     data: {
+  //       book: bookId,
+  //       user: user?.id,
+  //     },
+  //   };
+  //   try {
+  //     const res = await addToWishList(options).unwrap();
+  //     toast.success(res?.message);
+  //   } catch (error) {
+  //     toast.error(error?.message);
+  //   }
+  // };
+
+  const handleAddAndRemoveFromWishlist = async (operation: string) => {
+    const options = {
+      data: {
+        book: id,
+        user: user?.id,
+      },
+    };
+
+    try {
+      let res;
+      if (operation === "add") {
+        res = await addToWishList(options).unwrap();
+      } else if (operation === "remove") {
+        res = await removeFromWishList(options).unwrap();
+      }
+      toast.success(res?.message);
+    } catch (error) {
+      //@ts-ignore
+      toast.error(error?.message);
+    }
+  };
+
+  // const handleRemoveFromWishList = async (bookId: string) => {
+  //   const options = {
+  //     data: {
+  //       book: bookId,
+  //       user: user?.id,
+  //     },
+  //   };
+  //   try {
+  //     const res = await removeFromWishList(options).unwrap();
+  //     console.log(res);
+  //     toast.success(res?.message);
+  //   } catch (error) {
+  //     toast.error(error?.message);
+  //   }
+  // };
 
   return (
     <div className="w-full container">
@@ -75,10 +144,23 @@ export default function BookDetails() {
             </div>
             <hr className="mt-5" />
             <div className="flex justify-between ">
-              <button className="flex items-center my-2 text-primary dark:text-white hover:opacity-80 text-lg">
-                <AiOutlineHeart className="mr-2"></AiOutlineHeart>
-                Add To Wishlist
-              </button>
+              {isWishListed(wishlist?.data, id!) ? (
+                <button
+                  onClick={() => handleAddAndRemoveFromWishlist("remove")}
+                  className="flex items-center my-2 text-primary dark:text-white  text-lg"
+                >
+                  <AiFillHeart className="mr-2 " size={20} />
+                  Remove From Wishlist
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleAddAndRemoveFromWishlist("add")}
+                  className="flex items-center my-2 text-primary dark:text-white  text-lg"
+                >
+                  <AiOutlineHeart className="mr-2 " size={20} />
+                  Add To Wishlist
+                </button>
+              )}
             </div>
           </div>
         </div>

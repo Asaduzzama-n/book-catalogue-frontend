@@ -9,8 +9,7 @@ import {
 
 import { useUpdateReviewMutation } from "@/redux/features/review/reviewsApi";
 import { IReview } from "@/types/globalTypes";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
-import { setHelpful } from "@/redux/features/review/reviewSlice";
+
 import { useState } from "react";
 import CustomAlert from "@/components/shared/CustomAlert";
 
@@ -23,9 +22,9 @@ export default function ReviewReportSection(props: IProps) {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const [updateReviewMutation] = useUpdateReviewMutation();
+  const [isHelpfulVote, setIsHelpfulVote] = useState<boolean>(false);
 
-  const dispatch = useAppDispatch();
-  const { helpful } = useAppSelector((state) => state.review);
+  // const { helpful } = useAppSelector((state) => state.review);
 
   const handleVote = async (isHelpful: any) => {
     try {
@@ -39,7 +38,7 @@ export default function ReviewReportSection(props: IProps) {
 
       const response = await updateReviewMutation(options);
       console.log("From Review Report section", response);
-      dispatch(setHelpful(true));
+      setIsHelpfulVote(true);
     } catch (error) {
       console.error("Error updating review:", error);
     }
@@ -82,7 +81,7 @@ export default function ReviewReportSection(props: IProps) {
           <AccordionTrigger>Was this helpful to you?</AccordionTrigger>
           <AccordionContent>
             <div className="flex space-x-4">
-              {!helpful ? (
+              {isHelpfulVote ? (
                 <p className="my-1">Thanks for your feedback!</p>
               ) : (
                 <>

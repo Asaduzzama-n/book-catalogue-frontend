@@ -12,6 +12,7 @@ export const reviewApi = api.injectEndpoints({
     }),
     getReviews: builder.query({
       query: (id) => ({ url: `/review/book/${id}`, method: "GET" }),
+      providesTags: ["review"],
     }),
     updateReview: builder.mutation({
       query: ({ id, data }) => {

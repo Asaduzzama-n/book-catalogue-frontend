@@ -25,7 +25,7 @@ export default function DisplayReviewAndRating() {
     sortBy,
     sortOrder,
   });
-  console.log(review);
+
   const dispatch = useAppDispatch();
 
   const { currentPage, numberOfPages } = review?.meta || {};

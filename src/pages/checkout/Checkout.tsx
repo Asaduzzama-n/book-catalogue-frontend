@@ -11,11 +11,32 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
+import { useInitiatePaymentMutation } from "@/redux/features/payment/paymentApi";
 
 export default function Checkout() {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [initiatePayment] = useInitiatePaymentMutation();
 
   const { books, total } = useAppSelector((state) => state.cart);
+  const { user } = useAppSelector((state) => state.user);
+
+  const handlePayment = async () => {
+    try {
+      const booksIds = books.map((book: any) => book.id);
+      const options = {
+        data: {
+          amount: total,
+          name: "Asaduzzaman",
+          email: user?.email,
+          books: booksIds,
+        },
+      };
+      const response = await initiatePayment(options).unwrap();
+      window.location.replace(response?.data?.redirectGatewayURL);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="md:h-screen md:w-4/5 mx-auto my-10 ">
@@ -100,6 +121,7 @@ export default function Checkout() {
           </div>
           <Button
             disabled={!isChecked}
+            onClick={handlePayment}
             className=" bg-primary w-full my-5  text-white font-bold"
           >
             PAY
