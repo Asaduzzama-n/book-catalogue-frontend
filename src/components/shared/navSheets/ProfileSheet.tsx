@@ -28,7 +28,7 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
   // const dispatch = useAppDispatch();
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.user);
-  console.log(user.email);
+
   const handleLogout = () => {
     removeUserInfo("accessToken");
     dispatch(setUser({}));

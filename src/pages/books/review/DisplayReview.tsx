@@ -72,14 +72,20 @@ export default function DisplayReview(props: IProps) {
 
       {data.reviews &&
         data?.reviews?.map(
-          (review) =>
+          (review, index) =>
             review?.inappropriateCount <= 10 && (
               <div className="flex flex-col md:flex-row md:items-top min-h-32 border my-2 p-2">
                 <div className="w-full md:w-2/3  lg:w-3/4   py-2 md:py-0">
-                  <ReviewDisplaySection review={review}></ReviewDisplaySection>
+                  <ReviewDisplaySection
+                    key={index}
+                    review={review}
+                  ></ReviewDisplaySection>
                 </div>
                 <div className="w-full md:w-1/3 lg:w-1/4 py-2 md:py-0">
-                  <ReviewReportSection review={review}></ReviewReportSection>
+                  <ReviewReportSection
+                    key={index}
+                    review={review}
+                  ></ReviewReportSection>
                 </div>
               </div>
             )

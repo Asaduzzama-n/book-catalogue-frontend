@@ -13,9 +13,11 @@ import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "./PrivateRoute";
 import MyAccount from "@/pages/dashboard/userDashboard/MyAccount";
 import MyOrder from "@/pages/dashboard/userDashboard/MyOrder/MyOrder";
-import MyBooks from "@/pages/dashboard/userDashboard/MyBooks";
 import AccountSetting from "@/pages/dashboard/userDashboard/AccountSetting";
 import MyProfile from "@/pages/dashboard/userDashboard/MyProfile";
+import MyBooks from "@/pages/dashboard/userDashboard/MyBook/MyBooks";
+import PaymentSuccess from "@/pages/payment/PaymentSuccess";
+import PaymentFail from "@/pages/payment/paymentFail";
 
 const routes = createBrowserRouter([
   {
@@ -46,6 +48,7 @@ const routes = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/profile",
         element: (
@@ -92,11 +95,31 @@ const routes = createBrowserRouter([
       },
       {
         path: "/checkout",
-        element: <Checkout></Checkout>,
+        element: (
+          <PrivateRoute>
+            <Checkout></Checkout>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/details/:id",
         element: <BookDetails></BookDetails>,
+      },
+      {
+        path: "/payment/success/:invoiceId",
+        element: (
+          <PrivateRoute>
+            <PaymentSuccess></PaymentSuccess>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/payment/fail/",
+        element: (
+          <PrivateRoute>
+            <PaymentFail></PaymentFail>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/*",
