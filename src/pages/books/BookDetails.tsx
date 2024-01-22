@@ -9,7 +9,6 @@ import { Link, useParams } from "react-router-dom";
 import BookMetaData from "./BookMetaData";
 import BookInfo from "./BookInfo";
 import RelatedBooks from "./RelatedBooks";
-import { ReaderSheet } from "@/components/shared/reader/ReaderSheet";
 import { useGetSingleBookQuery } from "@/redux/features/books/booksApi";
 import { IBook } from "@/types/globalTypes";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
@@ -23,12 +22,12 @@ import {
 import { toast } from "react-toastify";
 import { isWishListed } from "@/helpers/wishlist-helper";
 
-export default function BookDetails() {
-  const breadcrumbPaths = [
-    { label: "Shop", url: "/shop" },
-    { label: "Details", url: "/details" },
-  ];
+import BookRating from "@/components/shared/BookRating";
+import { useGetReviewsQuery } from "@/redux/features/review/reviewsApi";
+import { isBookBought } from "@/helpers/isBookBuy-helper";
+import { LiaReadme } from "react-icons/lia";
 
+export default function BookDetails() {
   const dispatch = useAppDispatch();
 
   const { id } = useParams();
@@ -36,24 +35,17 @@ export default function BookDetails() {
   const { user } = useAppSelector((state) => state.user);
   const book: IBook = data?.data;
 
+  const breadcrumbPaths = [
+    { label: "Details", url: `/details/${book?.id}` },
+    { label: `${book?.title.split("(")[0]}`, url: `/details/${book?.id}` },
+  ];
+
   const [addToWishList] = useAddToWishListMutation();
   const [removeFromWishList] = useRemoveFromWishListMutation();
   const { data: wishlist } = useGetWishListQuery(user?.id as string);
 
-  // const handleAddToWishList = async (bookId: string) => {
-  //   const options = {
-  //     data: {
-  //       book: bookId,
-  //       user: user?.id,
-  //     },
-  //   };
-  //   try {
-  //     const res = await addToWishList(options).unwrap();
-  //     toast.success(res?.message);
-  //   } catch (error) {
-  //     toast.error(error?.message);
-  //   }
-  // };
+  const { data: review } = useGetReviewsQuery(book?.id);
+  const { avgRating, total } = review?.data || 0;
 
   const handleAddAndRemoveFromWishlist = async (operation: string) => {
     const options = {
@@ -65,33 +57,20 @@ export default function BookDetails() {
 
     try {
       let res;
+      let message;
       if (operation === "add") {
         res = await addToWishList(options).unwrap();
+        message = `${book?.title} added to wishlist`;
       } else if (operation === "remove") {
         res = await removeFromWishList(options).unwrap();
+        message = `${book?.title} removed from wishlist`;
       }
-      toast.success(res?.message);
+      toast.success(message || res?.message);
     } catch (error) {
       //@ts-ignore
-      toast.error(error?.message);
+      toast.error(message || res?.message);
     }
   };
-
-  // const handleRemoveFromWishList = async (bookId: string) => {
-  //   const options = {
-  //     data: {
-  //       book: bookId,
-  //       user: user?.id,
-  //     },
-  //   };
-  //   try {
-  //     const res = await removeFromWishList(options).unwrap();
-  //     console.log(res);
-  //     toast.success(res?.message);
-  //   } catch (error) {
-  //     toast.error(error?.message);
-  //   }
-  // };
 
   return (
     <div className="w-full container">
@@ -109,16 +88,20 @@ export default function BookDetails() {
             <div className="my-5">
               <h1 className="text-3xl font-semibold">{book?.title}</h1>
               <p className="my-2">
-                <Link to={"/author/:id"}>
-                  By: {book?.author?.author1?.name.firstName}
-                </Link>
+                <span className="font-medium">By: </span>
+                {book?.author?.author1?.name.firstName}
               </p>
-              <p> Category: {book?.category}</p>
-              <div className="my-5">
-                <p>Description: {book?.bookDescription}</p>
+              <p>
+                <span className="font-medium">Category: </span>
+                {book?.categoryName}
+              </p>
+              <div className="my-5 ">
+                <span className="font-medium">Description: </span>
+                {book?.bookDescription}
               </div>
-              <div className="my-5">
-                <p>Rating</p>
+              <div className="my-5 flex items-center ">
+                <BookRating rating={avgRating}></BookRating>{" "}
+                <span className="mx-2">({total})</span>
               </div>
               <div>
                 <h3 className="text-lg font-medium">Price: {book?.price}</h3>
@@ -127,19 +110,24 @@ export default function BookDetails() {
             {/* Button Section */}
             <div className="flex justify-start items-center ">
               <div className="mr-5">
-                <Link to={"/checkout"}>
-                  <button
-                    onClick={() => dispatch(addToCart(book))}
-                    className="bg-primary dark:bg-customBG text-white dark:text-primary  font-medium p-1 md:p-2 hover:opacity-80 w-32  h-10 border  flex items-center justify-center"
-                  >
-                    <AiOutlineShoppingCart className="mr-2"></AiOutlineShoppingCart>
-                    Buy Now
-                  </button>
-                </Link>
-              </div>
-
-              <div>
-                <ReaderSheet book={book}></ReaderSheet>
+                {isBookBought(user?.userBooks, book?.id) ? (
+                  <Link to={"/library/books"}>
+                    <button className="bg-primary dark:bg-customBG text-white dark:text-primary  font-medium p-1 md:p-2 hover:opacity-80   h-10 border  flex items-center justify-center">
+                      <LiaReadme size={20} className="mr-2" />
+                      Read from library
+                    </button>
+                  </Link>
+                ) : (
+                  <Link to={"/checkout"}>
+                    <button
+                      onClick={() => dispatch(addToCart(book))}
+                      className="bg-primary dark:bg-customBG text-white dark:text-primary  font-medium p-1 md:p-2 hover:opacity-80 w-32  h-10 border  flex items-center justify-center"
+                    >
+                      <AiOutlineShoppingCart className="mr-2"></AiOutlineShoppingCart>
+                      Buy Now
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
             <hr className="mt-5" />

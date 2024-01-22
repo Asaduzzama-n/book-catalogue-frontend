@@ -17,9 +17,9 @@ export default function HomeBestSeller(props: IProps) {
     <div className="my-10">
       <div className="">
         <div className="flex flex-col justify-center items-center md:flex-row md:justify-between my-5">
-          <h2 className="scroll-m-20 text-3xl my-4 font-semibold tracking-tight first:mt-0">
+          <h3 className="scroll-m-20 text-2xl my-4 font-semibold tracking-tight first:mt-0">
             BEST SELLER
-          </h2>
+          </h3>
           <div className="flex px-2 w-32 h-10 rounded-lg items-center hover:opacity-90">
             <Link
               className="mx-2 text-sm  font-medium text-primary dark:text-white"

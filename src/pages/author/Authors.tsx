@@ -1,6 +1,4 @@
-import AuthorCard from "@/components/AuthorCard";
 import CommonSearchForm from "@/components/forms/CommonSearchForm";
-import { books } from "../../../public/dummyData";
 
 export default function Authors() {
   return (
@@ -15,11 +13,7 @@ export default function Authors() {
           <CommonSearchForm></CommonSearchForm>
         </div>
       </div>
-      <div className="my-10 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 ">
-        {books.map((data, index) => (
-          <AuthorCard data={data} key={index}></AuthorCard>
-        ))}
-      </div>
+      <div className="my-10 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 "></div>
     </div>
   );
 }

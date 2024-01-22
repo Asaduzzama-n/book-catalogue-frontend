@@ -1,4 +1,5 @@
-import Rating from "@/components/shared/Rating";
+import BookRating from "@/components/shared/BookRating";
+
 import { IReview } from "@/types/globalTypes";
 
 interface IProps {
@@ -19,18 +20,18 @@ export default function ReviewDisplaySection(props: IProps) {
   return (
     <div>
       <div className="flex items-center ">
-        <Rating rating={review?.rating}></Rating>
+        <BookRating rating={review?.rating}></BookRating>
         <p className="font-semibold mx-5 text-lg">{review?.title}</p>
       </div>
       <br />
-      <div>
-        <span className="my-2">{review?.review}</span>
+      <article className=" text-pretty ">
+        <p className="my-2 ">{review?.review}</p>
         <br />
-        <br />
+
         <span className="font-serif">
           By: {review?.user?.name?.lastName} on {formattedDate}
         </span>
-      </div>
+      </article>
     </div>
   );
 }

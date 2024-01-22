@@ -6,9 +6,16 @@ import {
   NavigationMenuItem,
   NavigationMenuTrigger,
 } from "@radix-ui/react-navigation-menu";
-import { category } from "../../../../public/navBarBooksCategory";
+import { useGetCategoryQuery } from "@/redux/features/shop/shopApi";
 
+interface ICategory {
+  category: string;
+  key: string;
+  parentCategory: String;
+}
 export default function NavContent() {
+  const { data } = useGetCategoryQuery(undefined) || {};
+  const categories = data?.data;
   return (
     <div>
       <NavigationMenu className="false md:flex items-center justify-between list-none ">
@@ -23,18 +30,22 @@ export default function NavContent() {
                   ACADEMIC & NON FICTION
                 </h2>
                 <ul className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
-                  {category
-                    .filter((item) => item.group === "ACADEMIC & NON FICTION")
-                    .map((component) => (
-                      <li key={component.title}>
-                        <Link
-                          className="hover:border-b-2 border-primary dark:border-white "
-                          to={component.href}
-                        >
-                          {component.title}
-                        </Link>
-                      </li>
-                    ))}
+                  {categories &&
+                    categories
+                      .filter(
+                        (category: ICategory) =>
+                          category.parentCategory === "ACADEMIC & NON FICTION"
+                      )
+                      .map((category: ICategory) => (
+                        <li key={category.category}>
+                          <Link
+                            className="hover:border-b-2 border-primary dark:border-white "
+                            to={`/shop?category=${category.key}`}
+                          >
+                            {category.category}
+                          </Link>
+                        </li>
+                      ))}
                 </ul>
               </div>
               <div>
@@ -42,20 +53,23 @@ export default function NavContent() {
                   LANGUAGE, LOVE & LITERATURE
                 </h2>
                 <ul>
-                  {category
-                    .filter(
-                      (item) => item.group === "LANGUAGE, LOVE & LITERATURE"
-                    )
-                    .map((component) => (
-                      <li key={component.title}>
-                        <Link
-                          className="hover:border-b-2 border-primary dark:border-white"
-                          to={component.href}
-                        >
-                          {component.title}
-                        </Link>
-                      </li>
-                    ))}
+                  {categories &&
+                    categories
+                      .filter(
+                        (category: ICategory) =>
+                          category.parentCategory ===
+                          "LANGUAGE, LOVE & LITERATURE"
+                      )
+                      .map((category: ICategory) => (
+                        <li key={category.category}>
+                          <Link
+                            className="hover:border-b-2 border-primary dark:border-white"
+                            to={`/shop?category=${category.key}`}
+                          >
+                            {category.category}
+                          </Link>
+                        </li>
+                      ))}
                 </ul>
               </div>
               <div>
@@ -63,18 +77,22 @@ export default function NavContent() {
                   CHILDREN'S BOOKS
                 </h2>
                 <ul>
-                  {category
-                    .filter((item) => item.group === "CHILDREN'S BOOKS")
-                    .map((component) => (
-                      <li key={component.title}>
-                        <Link
-                          className="hover:border-b-2 border-primary dark:border-white"
-                          to={component.href}
-                        >
-                          {component.title}
-                        </Link>
-                      </li>
-                    ))}
+                  {categories &&
+                    categories
+                      .filter(
+                        (category: ICategory) =>
+                          category.parentCategory === "CHILDREN'S BOOKS"
+                      )
+                      .map((category: ICategory) => (
+                        <li key={category.category}>
+                          <Link
+                            className="hover:border-b-2 border-primary dark:border-white"
+                            to={`/shop?category=${category.key}`}
+                          >
+                            {category.category}
+                          </Link>
+                        </li>
+                      ))}
                 </ul>
               </div>
               <div>
@@ -82,18 +100,22 @@ export default function NavContent() {
                   UPL SERIES
                 </h2>
                 <ul>
-                  {category
-                    .filter((item) => item.group === "CHILDREN'S BOOKS")
-                    .map((component) => (
-                      <li key={component.title}>
-                        <Link
-                          className="hover:border-b-2 border-primary dark:border-white"
-                          to={component.href}
-                        >
-                          {component.title}
-                        </Link>
-                      </li>
-                    ))}
+                  {categories &&
+                    categories
+                      .filter(
+                        (category: ICategory) =>
+                          category.parentCategory === "UPL SERIES"
+                      )
+                      .map((category: ICategory) => (
+                        <li key={category.category}>
+                          <Link
+                            className="hover:border-b-2 border-primary dark:border-white"
+                            to={`/shop?category=${category.key}`}
+                          >
+                            {category.category}
+                          </Link>
+                        </li>
+                      ))}
                 </ul>
               </div>
             </div>

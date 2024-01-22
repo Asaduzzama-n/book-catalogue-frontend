@@ -71,7 +71,7 @@ export default function DisplayReviewAndRating() {
         <div>
           <button
             onClick={() => decrementPageNumber(currentPage)}
-            className="mr-5 px-2 py-1 bg-customBG "
+            className="mr-5 px-2 py-1  "
           >
             Prev
           </button>
@@ -84,7 +84,7 @@ export default function DisplayReviewAndRating() {
         <div>
           <button
             onClick={() => incrementPageNumber(currentPage)}
-            className="ml-5 p-2 px-2 py-1 bg-customBG"
+            className="ml-5 p-2 px-2 py-1 "
           >
             Next
           </button>

@@ -16,14 +16,14 @@ export default function BookMetaData(props: IProps) {
         <p className="mt-2">{book?.publisher.name}</p>
       </div>
       <div className="">
-        <p className="text-primary dark:text-white font-medium">
-          Published Date
+        <p className="text-primary dark:text-white font-medium">Reading Time</p>
+        <p className="mt-2">
+          {Number(book?.readTime) - 1} to {book?.readTime} hrs
         </p>
-        <p className="mt-2">{book?.publicationYear}</p>
       </div>
       <div className="">
         <p className="text-primary dark:text-white font-medium">Page length</p>
-        <p className="mt-2">English</p>
+        <p className="mt-2">{book?.page}</p>
       </div>
       <div className="">
         <p className="text-primary dark:text-white font-medium">ISBN</p>
