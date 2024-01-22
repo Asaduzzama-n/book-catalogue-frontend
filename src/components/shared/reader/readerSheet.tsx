@@ -5,7 +5,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ReactReader, ReactReaderStyle } from "react-reader";
-import { MdElectricBolt, MdSettings } from "react-icons/md";
+import { MdSettings } from "react-icons/md";
 import { useEffect, useRef, useState } from "react";
 import type { NavItem, Rendition, Contents } from "epubjs";
 import useLocalStorageState from "use-local-storage-state";
@@ -29,10 +29,11 @@ type ITheme = "light" | "dark" | "system" | "sepia";
 
 interface IProps {
   book: IBook;
+  triggerButton: any;
 }
 
 export function ReaderSheet(props: IProps) {
-  const { book } = props;
+  const { book, triggerButton } = props;
 
   //Disable Right and left click in reader
 
@@ -115,14 +116,9 @@ export function ReaderSheet(props: IProps) {
   return (
     <div>
       <Sheet key={"top"}>
-        <SheetTrigger asChild>
-          <button className="bg-primary text-white font-medium p-1 md:p-2 hover:opacity-90 w-32  h-10 border  flex items-center justify-center">
-            <MdElectricBolt className="mr-2"></MdElectricBolt>
-            Read Now
-          </button>
-        </SheetTrigger>
-        <SheetContent className=" w-full" side={"top"}>
-          <div className="" style={{ height: "100vh", width: "100%" }}>
+        <SheetTrigger asChild>{triggerButton}</SheetTrigger>
+        <SheetContent className="h-screen w-full" side={"top"}>
+          <div className="" style={{ height: "90vh" }}>
             <div className="flex justify-end mx-12">
               <DropdownMenu>
                 <DropdownMenuTrigger className="bg-customBG dark:bg-primary p-2 rounded-full flex items-center justify-center">
@@ -139,10 +135,10 @@ export function ReaderSheet(props: IProps) {
                       />
                     </span>
                     <Slider
-                      defaultValue={[110]}
+                      defaultValue={[fontSize]}
                       onValueChange={(value) => handleSlider(value)}
                       className="mx-5 "
-                      max={150}
+                      max={170}
                       min={80}
                       step={10}
                     />
@@ -188,7 +184,7 @@ export function ReaderSheet(props: IProps) {
                 }
               }}
               epubOptions={{
-                flow: "scrolled",
+                flow: "paginated",
                 manager: "continuous",
               }}
               getRendition={(_rendition: Rendition) => {

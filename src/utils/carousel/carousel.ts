@@ -38,7 +38,7 @@ export const relatedBookResponsive = {
   },
   desktop: {
     breakpoint: { max: 1440, min: 1025 },
-    items: 5,
+    items: 4,
   },
   tablet: {
     breakpoint: { max: 1024, min: 640 },

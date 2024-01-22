@@ -16,7 +16,7 @@ export default function PaymentSuccess() {
   console.log(payment);
 
   return (
-    <div className="h-screen container">
+    <div className="min-h-screen container mb-10">
       {!data?.data || isLoading ? (
         <Loader></Loader>
       ) : (

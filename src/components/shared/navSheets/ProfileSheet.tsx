@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/sheet";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { HiMenu } from "react-icons/hi";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import { FiUser, FiUserPlus } from "react-icons/fi";
 import { GoStack } from "react-icons/go";
 import { FaRegEdit } from "react-icons/fa";
@@ -48,26 +48,26 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
             <Avatar>
               <AvatarImage
                 className="h-8 rounded-full mt-2"
-                src="https://github.com/shadcn.png"
+                src={user?.image?.url}
               />
               <AvatarFallback>
                 <HiMenu />
               </AvatarFallback>
             </Avatar>
           ) : (
-            <h3 className="text-lg font-medium cursor-pointer">
+            <h3 className="text-sm font-medium cursor-pointer">
               {user?.email ? user?.email : "User"}
             </h3>
           )}
         </SheetTrigger>
-        <SheetContent className="bg-customBG dark:bg-primary" side={"right"}>
+        <SheetContent className="" side={"right"}>
           <div className="py-4">
-            <div className="text-center   md:flex items-center  border bg-white dark:bg-primary rounded-lg dark:border-white  p-4 mb-10">
+            <div className="text-center bg-primary rounded-md  md:flex items-center    p-4 mb-10">
               <div className="flex justify-center mb-2 md:mb-0 md:mr-5 ">
                 <Avatar>
                   <AvatarImage
-                    className="h-12  rounded-full mr-2 md:mr-5 hover:animate-bounce"
-                    src="https://github.com/shadcn.png"
+                    className="h-12  rounded-full mr-2  hover:animate-bounce"
+                    src={user?.image?.url}
                   />
                   <AvatarFallback>
                     <HiMenu />
@@ -75,14 +75,13 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
                 </Avatar>
               </div>
               <div>
-                <h2 className="font-medium">User</h2>
-                <p>{user.email ? user.email : "User"}</p>
+                <p className="text-sm">{user.email ? user.email : "User"}</p>
               </div>
             </div>
 
             <div className="">
               {!isLoggedIn() && (
-                <div className="my-5 rounded-t-lg rounded-b-lg bg-white dark:bg-primary border  dark:border-white ">
+                <div className="my-5 rounded-t-lg rounded-b-lg  ">
                   <Link
                     className="flex items-center px-2   hover:opacity-80   h-12 "
                     to="/login"
@@ -102,17 +101,19 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
                 </div>
               )}
 
-              <div className=" my-5 rounded-t-lg rounded-b-lg bg-white dark:bg-primary border  dark:border-white ">
-                {/* <Link
+              <div className=" my-5 rounded-t-lg rounded-b-lg  ">
+                <Link
                   className=" flex items-center px-2   border-b  dark:border-white h-12 "
                   to=""
                 >
                   <AiOutlineShoppingCart className="mr-2 " size={18} />
                   My Cart (0)
                 </Link>
-                 */}
 
-                <Link className="flex items-center px-2    h-12" to="">
+                <Link
+                  className="flex items-center px-2 border-b  dark:border-white   h-12"
+                  to=""
+                >
                   {" "}
                   <AiOutlineHeart className="mr-2" size={18} />
                   My Wishlist (2)
@@ -120,7 +121,7 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
                 {/*  */}
               </div>
 
-              <div className="my-5 rounded-t-lg rounded-b-lg bg-white dark:bg-primary border  dark:border-white ">
+              <div className="my-5 rounded-t-lg rounded-b-lg  ">
                 <Link
                   className="flex items-center px-2  border-b  dark:border-white    h-12  "
                   to="/account"
@@ -154,7 +155,7 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
                 </Link>
 
                 <Link
-                  className="flex items-center px-2      h-12 "
+                  className="flex items-center px-2 border-b  dark:border-white     h-12 "
                   to="/account/settings"
                 >
                   {" "}
@@ -162,7 +163,7 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
                   Account Settings
                 </Link>
               </div>
-              <div className="my-5 bg-white dark:bg-primary border dark:border-white rounded-lg">
+              <div className="my-5  rounded-lg">
                 {isLoggedIn() && (
                   <button
                     onClick={handleLogout}

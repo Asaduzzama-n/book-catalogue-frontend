@@ -46,6 +46,11 @@ export interface IBook {
   bookUrl: Image;
   coverImg: Image;
   quickViewUrl: Image;
+  page: string;
+  readTime: string;
+  sold: number;
+  categoryName: string;
+  tags: string[];
 }
 
 type userName = {

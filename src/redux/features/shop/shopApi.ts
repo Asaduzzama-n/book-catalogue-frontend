@@ -22,7 +22,13 @@ export const shopApi = api.injectEndpoints({
         return { url: queryString, method: "GET" };
       },
     }),
+    getCategory: builder.query({
+      query: () => ({
+        url: "/categories/",
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetFilteredBooksQuery } = shopApi;
+export const { useGetFilteredBooksQuery, useGetCategoryQuery } = shopApi;

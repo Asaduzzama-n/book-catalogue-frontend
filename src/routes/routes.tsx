@@ -17,7 +17,7 @@ import AccountSetting from "@/pages/dashboard/userDashboard/AccountSetting";
 import MyProfile from "@/pages/dashboard/userDashboard/MyProfile";
 import MyBooks from "@/pages/dashboard/userDashboard/MyBook/MyBooks";
 import PaymentSuccess from "@/pages/payment/PaymentSuccess";
-import PaymentFail from "@/pages/payment/paymentFail";
+import PaymentFail from "@/pages/payment/PaymentFail";
 
 const routes = createBrowserRouter([
   {
@@ -82,9 +82,10 @@ const routes = createBrowserRouter([
         ),
       },
       {
-        path: "/shop",
+        path: "/shop" || "/shop/category/",
         element: <Shop></Shop>,
       },
+
       {
         path: "/authors",
         element: <Authors></Authors>,

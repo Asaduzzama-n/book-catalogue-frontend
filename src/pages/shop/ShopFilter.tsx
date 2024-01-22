@@ -17,6 +17,7 @@ import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import _ from "lodash";
 import { TbCurrencyTaka } from "react-icons/tb";
+import { useGetCategoryQuery } from "@/redux/features/shop/shopApi";
 export default function ShopFilter() {
   const breadcrumbPaths = [
     { label: "Shop", url: "/shop" },
@@ -57,7 +58,6 @@ export default function ShopFilter() {
     500
   );
 
-  // Event handler for price range change
   const handlePriceChange = (newRange: number | number[]) => {
     debouncedHandlePriceChange(newRange);
   };
@@ -74,17 +74,8 @@ export default function ShopFilter() {
     },
   ];
 
-  const categories = [
-    {
-      name: "Romance",
-    },
-    {
-      name: "Science Fiction & Fantasy",
-    },
-    {
-      name: "Kids",
-    },
-  ];
+  const { data } = useGetCategoryQuery(undefined);
+  const categories = data?.data;
   return (
     <div>
       <div>
@@ -122,24 +113,24 @@ export default function ShopFilter() {
           </AccordionItem>
           <AccordionItem value="item-2">
             <AccordionTrigger>Category</AccordionTrigger>
-            <AccordionContent>
+            <AccordionContent className="overflow-y-scroll h-[400px]">
               {categories &&
-                categories.map((cat) => (
+                categories.map((cat: any) => (
                   <label
-                    key={cat.name}
+                    key={cat.category}
                     className={`flex items-center mb-2 hover:bg-customBG dark:hover:bg-primary py-1 cursor-pointer ${
-                      category === cat.name ? "bg-gray-200 dark:bg-primary" : ""
+                      category === cat.key ? "bg-gray-200 dark:bg-primary" : ""
                     }`}
                   >
                     <input
                       className="hidden"
                       type="checkbox"
                       name="category"
-                      value={cat.name}
-                      checked={category === cat.name}
-                      onChange={() => handleCategoryChange(cat.name)}
+                      value={cat.category}
+                      checked={category === cat.key}
+                      onChange={() => handleCategoryChange(cat.key)}
                     />
-                    <span className="ml-2">{cat.name}</span>
+                    <span className="ml-2">{cat.category}</span>
                   </label>
                 ))}
             </AccordionContent>

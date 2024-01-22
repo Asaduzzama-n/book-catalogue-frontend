@@ -35,8 +35,6 @@ const LoginForm: React.FC<LoginFormProps> = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
-  const { user } = useAppSelector((state) => state.user);
-  console.log("FROM LOGIN", user);
 
   // const [token] = useToken(user?.email);
 
@@ -62,9 +60,9 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       toast.success(res.message);
       storeUserInfo({ accessToken: res?.data?.accessToken });
       navigate(location.state?.from || "/");
-      const userData = getUserInfo();
-      const { iat, exp, ...user } = userData;
-      dispatch(setUser({ ...user }));
+      console.log(res);
+      // const userData = getUserInfo();
+      dispatch(setUser(res?.data?.userData));
     } catch (error) {
       toast.error(error?.data?.message);
     }

@@ -21,6 +21,9 @@ export default function DisplayReview(props: IProps) {
   const dispatch = useAppDispatch();
 
   const handleRatingChange = (value: string) => {
+    if (value === "all") {
+      dispatch(setRating(null));
+    }
     dispatch(setRating(Number(value)));
   };
 
@@ -40,9 +43,10 @@ export default function DisplayReview(props: IProps) {
           <div>
             <Select onChange={handleRatingChange}>
               <SelectTrigger className="w-[150px] focus:outline-none">
-                <SelectValue placeholder="Filter by: All" />
+                <SelectValue placeholder="Filter by:" />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="all">All</SelectItem>
                 <SelectItem value="5">5 Star</SelectItem>
                 <SelectItem value="4">4 Star</SelectItem>
                 <SelectItem value="3">3 Star</SelectItem>
