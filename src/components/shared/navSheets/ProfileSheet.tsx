@@ -19,6 +19,7 @@ import { IoLibraryOutline } from "react-icons/io5";
 import { isLoggedIn, removeUserInfo } from "@/services/auth.service";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setUser } from "@/redux/features/user/userSlice";
+import { CartSheet } from "@/pages/cart/CartSheet";
 
 type ProfileSheetProps = {
   avatar: boolean;
@@ -40,6 +41,8 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
     // });
   };
 
+  const { books } = useAppSelector((state) => state.cart);
+  console.log(books);
   return (
     <div>
       <Sheet key={"right"}>
@@ -62,7 +65,7 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
         </SheetTrigger>
         <SheetContent className="" side={"right"}>
           <div className="py-4">
-            <div className="text-center bg-primary rounded-md  md:flex items-center    p-4 mb-10">
+            <div className="text-center bg-customBG dark:bg-primary rounded-md  md:flex items-center    p-4 mb-10">
               <div className="flex justify-center mb-2 md:mb-0 md:mr-5 ">
                 <Avatar>
                   <AvatarImage
@@ -102,21 +105,25 @@ export function ProfileSheet({ avatar }: ProfileSheetProps) {
               )}
 
               <div className=" my-5 rounded-t-lg rounded-b-lg  ">
-                <Link
-                  className=" flex items-center px-2   border-b  dark:border-white h-12 "
-                  to=""
-                >
-                  <AiOutlineShoppingCart className="mr-2 " size={18} />
-                  My Cart (0)
-                </Link>
+                <CartSheet
+                  triggerButton={
+                    <div className="flex items-center px-2 border-b  dark:border-white cursor-pointer  h-12 ">
+                      <AiOutlineShoppingCart
+                        className=" "
+                        size={18}
+                      ></AiOutlineShoppingCart>
+                      <p className="mx-2">My Cart ({books?.length})</p>
+                    </div>
+                  }
+                ></CartSheet>
 
                 <Link
                   className="flex items-center px-2 border-b  dark:border-white   h-12"
-                  to=""
+                  to="/my-wishlist"
                 >
                   {" "}
                   <AiOutlineHeart className="mr-2" size={18} />
-                  My Wishlist (2)
+                  My Wishlist
                 </Link>
                 {/*  */}
               </div>

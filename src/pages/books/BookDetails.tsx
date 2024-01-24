@@ -26,6 +26,7 @@ import BookRating from "@/components/shared/BookRating";
 import { useGetReviewsQuery } from "@/redux/features/review/reviewsApi";
 import { isBookBought } from "@/helpers/isBookBuy-helper";
 import { LiaReadme } from "react-icons/lia";
+import Loader from "@/components/shared/Loader";
 
 export default function BookDetails() {
   const dispatch = useAppDispatch();
@@ -72,7 +73,9 @@ export default function BookDetails() {
     }
   };
 
-  return (
+  return !book ? (
+    <Loader></Loader>
+  ) : (
     <div className="w-full container">
       <div className="grid grid-cols-1 md:grid-cols-2 p-5">
         <div className="flex justify-center items-center">

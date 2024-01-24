@@ -11,7 +11,7 @@ import type { NavItem, Rendition, Contents } from "epubjs";
 import useLocalStorageState from "use-local-storage-state";
 
 import { useTheme } from "@/components/theme/theme-provider";
-import { IBook } from "@/types/globalTypes";
+
 import { Slider } from "@/components/ui/slider";
 import {
   DropdownMenu,
@@ -28,7 +28,7 @@ type ITheme = "light" | "dark" | "system" | "sepia";
 // };
 
 interface IProps {
-  book: IBook;
+  book: any;
   triggerButton: any;
 }
 

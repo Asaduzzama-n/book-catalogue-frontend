@@ -18,6 +18,8 @@ import MyProfile from "@/pages/dashboard/userDashboard/MyProfile";
 import MyBooks from "@/pages/dashboard/userDashboard/MyBook/MyBooks";
 import PaymentSuccess from "@/pages/payment/PaymentSuccess";
 import PaymentFail from "@/pages/payment/PaymentFail";
+import MyWishList from "@/pages/dashboard/userDashboard/MyWishList";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const routes = createBrowserRouter([
   {
@@ -38,13 +40,21 @@ const routes = createBrowserRouter([
       },
       {
         path: "/best-sellers",
-        element: <Shop></Shop>,
+        element: (
+          <>
+            <ScrollToTop />
+            <Shop></Shop>
+          </>
+        ),
       },
       {
         path: "/account",
         element: (
           <PrivateRoute>
-            <MyAccount></MyAccount>
+            <>
+              <ScrollToTop />
+              <MyAccount></MyAccount>
+            </>
           </PrivateRoute>
         ),
       },
@@ -53,7 +63,10 @@ const routes = createBrowserRouter([
         path: "/profile",
         element: (
           <PrivateRoute>
-            <MyProfile></MyProfile>
+            <>
+              <ScrollToTop />
+              <MyProfile></MyProfile>
+            </>
           </PrivateRoute>
         ),
       },
@@ -61,7 +74,10 @@ const routes = createBrowserRouter([
         path: "/purchase-history",
         element: (
           <PrivateRoute>
-            <MyOrder></MyOrder>
+            <>
+              <ScrollToTop />
+              <MyOrder></MyOrder>
+            </>
           </PrivateRoute>
         ),
       },
@@ -69,7 +85,10 @@ const routes = createBrowserRouter([
         path: "/library/books",
         element: (
           <PrivateRoute>
-            <MyBooks></MyBooks>
+            <>
+              <ScrollToTop />
+              <MyBooks></MyBooks>
+            </>
           </PrivateRoute>
         ),
       },
@@ -77,34 +96,71 @@ const routes = createBrowserRouter([
         path: "/account/settings",
         element: (
           <PrivateRoute>
-            <AccountSetting></AccountSetting>
+            <>
+              <ScrollToTop />
+              <AccountSetting></AccountSetting>
+            </>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/my-wishlist",
+        element: (
+          <PrivateRoute>
+            <>
+              <ScrollToTop />
+              <MyWishList></MyWishList>
+            </>
           </PrivateRoute>
         ),
       },
       {
         path: "/shop" || "/shop/category/",
-        element: <Shop></Shop>,
+        element: (
+          <>
+            <ScrollToTop />
+            <Shop></Shop>
+          </>
+        ),
       },
 
       {
         path: "/authors",
-        element: <Authors></Authors>,
+        element: (
+          <>
+            <ScrollToTop />
+            <Authors></Authors>
+          </>
+        ),
       },
       {
         path: "/authors/:id",
-        element: <AuthorDetails></AuthorDetails>,
+        element: (
+          <>
+            <ScrollToTop />
+            <AuthorDetails></AuthorDetails>
+          </>
+        ),
       },
       {
         path: "/checkout",
         element: (
           <PrivateRoute>
-            <Checkout></Checkout>
+            <>
+              <ScrollToTop />
+              <Checkout></Checkout>
+            </>
           </PrivateRoute>
         ),
       },
       {
         path: "/details/:id",
-        element: <BookDetails></BookDetails>,
+        element: (
+          <>
+            <ScrollToTop />
+            <BookDetails></BookDetails>
+          </>
+        ),
       },
       {
         path: "/payment/success/:invoiceId",
@@ -123,7 +179,7 @@ const routes = createBrowserRouter([
         ),
       },
       {
-        path: "/*",
+        path: "*",
         element: <NotFound></NotFound>,
       },
     ],

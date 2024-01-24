@@ -7,6 +7,8 @@ import {
   NavigationMenuTrigger,
 } from "@radix-ui/react-navigation-menu";
 import { useGetCategoryQuery } from "@/redux/features/shop/shopApi";
+import { useAppDispatch } from "@/redux/hooks";
+import { setCategory } from "@/redux/features/shop/shopSlice";
 
 interface ICategory {
   category: string;
@@ -16,6 +18,12 @@ interface ICategory {
 export default function NavContent() {
   const { data } = useGetCategoryQuery(undefined) || {};
   const categories = data?.data;
+  const dispatch = useAppDispatch();
+
+  const handleOnclick = (key: string) => {
+    dispatch(setCategory(key));
+  };
+
   return (
     <div>
       <NavigationMenu className="false md:flex items-center justify-between list-none ">
@@ -39,6 +47,7 @@ export default function NavContent() {
                       .map((category: ICategory) => (
                         <li key={category.category}>
                           <Link
+                            onClick={() => dispatch(setCategory(category.key))}
                             className="hover:border-b-2 border-primary dark:border-white "
                             to={`/shop?category=${category.key}`}
                           >
@@ -63,6 +72,7 @@ export default function NavContent() {
                       .map((category: ICategory) => (
                         <li key={category.category}>
                           <Link
+                            onClick={() => handleOnclick(category.key)}
                             className="hover:border-b-2 border-primary dark:border-white"
                             to={`/shop?category=${category.key}`}
                           >
