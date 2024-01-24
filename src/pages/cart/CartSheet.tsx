@@ -24,16 +24,14 @@ import {
 import { MdCancel } from "react-icons/md";
 import { removeFromCart } from "@/redux/features/cart/cartSlice";
 
-export function CartSheet() {
+export function CartSheet({ triggerButton }: any) {
   const { books, total } = useAppSelector((state) => state.cart);
   const dispatch = useAppDispatch();
   return (
     <div>
       <Sheet key={"bottom"}>
         <SheetTrigger asChild>
-          <div className=" p-2 bg-customBG dark:bg-secondary rounded-full">
-            <AiOutlineShoppingCart size={20}></AiOutlineShoppingCart>
-          </div>
+          <div className=" ">{triggerButton}</div>
         </SheetTrigger>
         <SheetContent
           className="w-full md:w-3/4 mx-auto max-h-[500px] overflow-y-scroll"

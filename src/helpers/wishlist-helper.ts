@@ -1,5 +1,5 @@
 export const isWishListed = (wishlist: any, bookId: string): boolean => {
-  return wishlist?.some((wish: any) => wish.book === bookId);
+  return wishlist?.some((wish: any) => wish.book.id === bookId);
 };
 
 // interface IWishlistOption {

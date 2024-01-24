@@ -17,6 +17,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/components/theme/theme-provider";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function NavBar() {
   const { setTheme } = useTheme();
@@ -42,7 +43,7 @@ export default function NavBar() {
           <div className="">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="rounded-full w-10 h-10 flex items-center bg-customBG dark:bg-secondary justify-center">
+                <button className="rounded-full w-10 h-10 flex items-center  justify-center">
                   <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
                   <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
                   <span className="sr-only">Toggle theme</span>
@@ -61,13 +62,17 @@ export default function NavBar() {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <div className="md:mx-5 cursor-pointer">
-            <CartSheet></CartSheet>
+          <div className="md:mx-5 cursor-pointer p-2  rounded-full">
+            <CartSheet
+              triggerButton={
+                <AiOutlineShoppingCart size={20}></AiOutlineShoppingCart>
+              }
+            ></CartSheet>
           </div>
           <div className="md:mr-5 cursor-pointer">
             <SearchSheet></SearchSheet>
           </div>
-          <div className="cursor-pointer">
+          <div className="cursor-pointer mr-2 md:mr-0">
             <ProfileSheet avatar={true}></ProfileSheet>
           </div>
         </div>

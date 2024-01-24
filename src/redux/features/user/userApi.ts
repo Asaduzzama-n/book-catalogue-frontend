@@ -6,6 +6,12 @@ export const userApi = api.injectEndpoints({
       query: () => ({ url: "/user/my-profile", method: "GET" }),
       providesTags: ["user"],
     }),
+    getMyBooks: builder.query({
+      query: () => ({
+        url: "/user/my-books",
+        method: "GET",
+      }),
+    }),
     updateUser: builder.mutation({
       query: (data: any) => ({
         url: "/user/my-profile",
@@ -44,4 +50,5 @@ export const {
   useGetWishListQuery,
   useAddToWishListMutation,
   useRemoveFromWishListMutation,
+  useGetMyBooksQuery,
 } = userApi;
