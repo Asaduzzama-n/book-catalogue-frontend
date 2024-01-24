@@ -33,22 +33,6 @@ const SignupForm: React.FC<SignupFormProps> = () => {
   const navigate = useNavigate();
   const onSubmit = async (data: any) => {
     try {
-      // const result = await dispatch(
-      //   createUser({ email: data.email, password: data.password })
-      // );
-      // if (createUser.fulfilled.match(result)) {
-      //   //Update User profile
-      //   handleProfileUpdate(data?.name, data?.email);
-      //   console.log(result.payload);
-      //   toast.success(`Account created successfully`);
-      // } else if (createUser.rejected.match(result)) {
-      //   const errorMessage = result.error.message;
-      //   const toastMessage = errorMessage!
-      //     .split("/")[1]
-      //     .slice(0, -2)
-      //     .toUpperCase();
-      //   toast.error(toastMessage);
-      // }
       const options = {
         data: {
           name: {
@@ -72,36 +56,6 @@ const SignupForm: React.FC<SignupFormProps> = () => {
       toast.error(error?.data?.message);
     }
   };
-
-  // const handleProfileUpdate = (name: string, email: string) => {
-  //   const profile = { displayName: name };
-
-  //   dispatch(updateUserProfile(profile))
-  //     .then(() => saveUserInfo(name, email))
-  //     .catch((error) => console.error(error));
-  // };
-
-  // const saveUserInfo = (name: string, email: string) => {
-  //   const user = {
-  //     name: {
-  //       firstName: name.includes(" ") ? name.split(" ")[0] : name,
-  //       lastName: name.includes(" ") ? name.split(" ")[1] : "",
-  //     },
-  //     email: email,
-  //     role: "user",
-  //   };
-  //   fetch("http://localhost:5000/api/v1/auth/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(user),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // };
 
   return (
     <div className="">
