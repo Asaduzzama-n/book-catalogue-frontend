@@ -20,6 +20,8 @@ import PaymentSuccess from "@/pages/payment/PaymentSuccess";
 import PaymentFail from "@/pages/payment/PaymentFail";
 import MyWishList from "@/pages/dashboard/userDashboard/MyWishList";
 import ScrollToTop from "@/components/ScrollToTop";
+import ForgotPassword from "@/components/forms/ForgotPassword";
+import ResetPassword from "@/components/forms/ResetPassword";
 
 const routes = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ const routes = createBrowserRouter([
       {
         path: "/signup",
         element: <SignupForm></SignupForm>,
+      },
+      {
+        path: "/forgot-password",
+        element: <ForgotPassword></ForgotPassword>,
+      },
+      {
+        path: "/reset-password",
+        element: <ResetPassword></ResetPassword>,
       },
       {
         path: "/best-sellers",
