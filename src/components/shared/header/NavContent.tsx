@@ -7,8 +7,31 @@ import {
   NavigationMenuTrigger,
 } from "@radix-ui/react-navigation-menu";
 import { useGetCategoryQuery } from "@/redux/features/shop/shopApi";
-import { useAppDispatch } from "@/redux/hooks";
-import { setCategory } from "@/redux/features/shop/shopSlice";
+
+import { useEffect } from "react";
+import { useTranslation, initReactI18next } from "react-i18next";
+import i18n from "i18next";
+import tEn from "../../../../public/locales/en/translation.json";
+import tBn from "../../../../public/locales/bn/translation.json";
+
+i18n
+  .use(initReactI18next) // passes i18n down to react-i18next
+  .init({
+    resources: {
+      en: {
+        translation: tEn,
+      },
+      de: {
+        translation: tBn,
+      },
+    },
+    lng: "en",
+    fallbackLng: "en",
+
+    interpolation: {
+      escapeValue: false,
+    },
+  });
 
 interface ICategory {
   category: string;
@@ -18,18 +41,27 @@ interface ICategory {
 export default function NavContent() {
   const { data } = useGetCategoryQuery(undefined) || {};
   const categories = data?.data;
-  const dispatch = useAppDispatch();
 
-  const handleOnclick = (key: string) => {
-    dispatch(setCategory(key));
+  const changeLang = (l: string) => {
+    return () => {
+      i18n.changeLanguage(l);
+      localStorage.setItem("lang", l);
+    };
   };
+
+  useEffect(() => {
+    let currentLang = localStorage.getItem("lang");
+    i18n.changeLanguage(currentLang!);
+  }, []);
+
+  const { t } = useTranslation();
 
   return (
     <div>
-      <NavigationMenu className="false md:flex items-center justify-between list-none ">
-        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-customBG dark:hover:bg-secondary  p-2 rounded-md">
+      <NavigationMenu className="false md:flex items-center justify-between list-none font-medium">
+        <NavigationMenuItem className="my-5 md:mx-5 hover:text-primary  p-2 rounded-md">
           <NavigationMenuTrigger className="text-md">
-            Books
+            {t("nav_books")}
           </NavigationMenuTrigger>
           <NavigationMenuContent className="absolute left-0 w-full bg-customBG dark:bg-primary mt-6 md:mt-4   shadow-md p-4 z-10">
             <div className="md:flex justify-between lg:w-4/5 mx-auto max-h-80 overflow-y-auto">
@@ -47,7 +79,6 @@ export default function NavContent() {
                       .map((category: ICategory) => (
                         <li key={category.category}>
                           <Link
-                            onClick={() => dispatch(setCategory(category.key))}
                             className="hover:border-b-2 border-primary dark:border-white "
                             to={`/shop?category=${category.key}`}
                           >
@@ -72,7 +103,6 @@ export default function NavContent() {
                       .map((category: ICategory) => (
                         <li key={category.category}>
                           <Link
-                            onClick={() => handleOnclick(category.key)}
                             className="hover:border-b-2 border-primary dark:border-white"
                             to={`/shop?category=${category.key}`}
                           >
@@ -131,17 +161,21 @@ export default function NavContent() {
             </div>
           </NavigationMenuContent>
         </NavigationMenuItem>
-        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-customBG dark:hover:bg-secondary  p-2 rounded-md">
-          <Link className="text-md" to="/welcome">
-            Authors
+        <NavigationMenuItem className="my-5 md:mx-5  hover:text-primary p-2 rounded-md">
+          <Link className="text-md" to="/authors">
+            {t("nav_author")}
           </Link>
         </NavigationMenuItem>
-        <NavigationMenuItem className="my-5 inline-block md:hidden lg:inline-block md:mx-5 hover:bg-customBG dark:hover:bg-secondary p-2 rounded-md">
+        <div className="flex items-center space-x-4">
+          <button onClick={changeLang("en")}>EN</button>
+          <button onClick={changeLang("de")}>BN</button>
+        </div>
+        {/* <NavigationMenuItem className="my-5 inline-block md:hidden lg:inline-block md:mx-5 hover:bg-customBG dark:hover:bg-secondary p-2 rounded-md">
           <Link className="text-md" to="/best-sellers">
             Best sellers
           </Link>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="my-5 md:mx-5 hover:bg-customBG dark:hover:bg-secondary p-2 rounded-md">
+        </NavigationMenuItem> */}
+        {/* <NavigationMenuItem className="my-5 md:mx-5 hover:bg-customBG dark:hover:bg-secondary p-2 rounded-md">
           <NavigationMenuTrigger className="text-md ">
             Conversations
           </NavigationMenuTrigger>
@@ -160,7 +194,7 @@ export default function NavContent() {
               </li>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenu>
     </div>
   );

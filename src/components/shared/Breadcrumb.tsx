@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { AiOutlineHome } from "react-icons/ai";
 
 interface BreadcrumbProps {
-  paths: { label: string; url: string }[];
+  paths: { label: string | null; url: string }[];
 }
 
 const Breadcrumb: React.FC<BreadcrumbProps> = ({ paths }) => {
   return (
-    <nav className="flex items-center text-lg  dark:text-white text-primary">
+    <nav className="flex items-center   dark:text-white text-primary">
       <Link to="/" className="flex items-center hover:opacity-90">
         <AiOutlineHome className="mr-1" />
         Home

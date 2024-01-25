@@ -59,7 +59,7 @@ export default function DisplayReview(props: IProps) {
           <div className="ml-5">
             <Select onChange={handleSortByChange}>
               <SelectTrigger className="w-[150px] focus:outline-none">
-                <SelectValue placeholder="Filter by: Newest" />
+                <SelectValue placeholder="Sort by: Newest" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="isHelpful-desc">Most Helpful</SelectItem>

@@ -172,7 +172,7 @@ export default function BookDetails() {
 
       {/* Review and Rating Section */}
       <div className="mb-5">
-        <DisplayReviewAndRating></DisplayReviewAndRating>
+        <DisplayReviewAndRating book={book}></DisplayReviewAndRating>
       </div>
     </div>
   );

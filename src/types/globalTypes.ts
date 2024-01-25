@@ -51,6 +51,8 @@ export interface IBook {
   sold: number;
   categoryName: string;
   tags: string[];
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 type userName = {
