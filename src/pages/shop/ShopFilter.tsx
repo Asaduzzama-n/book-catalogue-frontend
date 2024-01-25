@@ -1,59 +1,60 @@
-import Breadcrumb from "@/components/shared/Breadcrumb";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import {
-  setCategory,
-  setIsFilterApplied,
-  setLanguage,
-  setPriceRange,
-} from "@/redux/features/shop/shopSlice";
+// import {
+//   setCategory,
+//   setLanguage,
+//   setPriceRange,
+// } from "@/redux/features/shop/shopSlice";
 
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+// import { useAppDispatch } from "@/redux/hooks";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import _ from "lodash";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { useGetCategoryQuery } from "@/redux/features/shop/shopApi";
-export default function ShopFilter() {
-  const breadcrumbPaths = [
-    { label: "Shop", url: "/shop" },
-    { label: "Category", url: "/shop" },
-  ];
 
-  const dispatch = useAppDispatch();
-  const { language, category, minPrice, maxPrice } = useAppSelector(
-    (state) => state.shop
-  );
+export default function ShopFilter(props: any) {
+  // const dispatch = useAppDispatch();
+  const { setSearchParams, category, language, minPrice, maxPrice } = props;
 
   const handleLanguageChange = (data: string) => {
-    dispatch(setLanguage(data));
+    // dispatch(setLanguage(data));
+    setSearchParams((prevParams: string) => {
+      const updatedParams = new URLSearchParams(prevParams);
+      updatedParams.set("language", data);
+      return updatedParams;
+    });
   };
 
-  const handleCategoryChange = (data: string) => {
-    dispatch(setCategory(data));
-  };
-
-  const handleResetFilter = () => {
-    dispatch(setLanguage(null));
-    dispatch(setCategory(null));
-    dispatch(setPriceRange({ minPrice: 0, maxPrice: 5000 }));
+  const handleCategoryChange = (data: { category: string; key: string }) => {
+    // dispatch(setCategory(data));
+    setSearchParams((prevParams: string) => {
+      const updatedParams = new URLSearchParams(prevParams);
+      updatedParams.set("category", data.key);
+      return updatedParams;
+    });
   };
 
   const debouncedHandlePriceChange = _.debounce(
     (newRange: number | number[]) => {
-      if (Array.isArray(newRange)) {
-        dispatch(
-          setPriceRange({
-            minPrice: Number(newRange[0]),
-            maxPrice: Number(newRange[1]),
-          })
-        );
-        setIsFilterApplied(true);
-      }
+      setSearchParams((prevParams: string) => {
+        const updatedParams = new URLSearchParams(prevParams);
+        if (Array.isArray(newRange)) {
+          // dispatch(
+          //   setPriceRange({
+          //     minPrice: Number(newRange[0]),
+          //     maxPrice: Number(newRange[1]),
+          //   })
+          // );
+          updatedParams.set("minPrice", newRange[0] + "");
+          updatedParams.set("maxPrice", newRange[1] + "");
+        }
+        return updatedParams;
+      });
     },
     500
   );
@@ -70,7 +71,7 @@ export default function ShopFilter() {
       name: "Bangla",
     },
     {
-      name: "France",
+      name: "French",
     },
   ];
 
@@ -78,12 +79,7 @@ export default function ShopFilter() {
   const categories = data?.data;
   return (
     <div>
-      <div>
-        <div className="">
-          <Breadcrumb paths={breadcrumbPaths} />
-        </div>
-      </div>
-      <div className="my-5">
+      <div className="border-t">
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>Language</AccordionTrigger>
@@ -128,7 +124,7 @@ export default function ShopFilter() {
                       name="category"
                       value={cat.category}
                       checked={category === cat.key}
-                      onChange={() => handleCategoryChange(cat.key)}
+                      onChange={() => handleCategoryChange(cat)}
                     />
                     <span className="ml-2">{cat.category}</span>
                   </label>
@@ -143,7 +139,7 @@ export default function ShopFilter() {
                 <Slider
                   className=""
                   range
-                  defaultValue={[minPrice, maxPrice]}
+                  // defaultValue={[minPrice, maxPrice]}
                   min={0}
                   max={5000}
                   step={1}
@@ -174,7 +170,7 @@ export default function ShopFilter() {
       </div>
 
       <button
-        onClick={() => handleResetFilter()}
+        // onClick={() => handleResetFilter()}
         className="w-full p-2 bg-primary rounded-md my-5 font-medium text-white"
       >
         Reset Filter

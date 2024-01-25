@@ -1,13 +1,14 @@
 import { ReviewForm } from "@/components/forms/ReviewForm";
 import BookRating from "@/components/shared/BookRating";
-import { IReviewResponse } from "@/types/globalTypes";
+import { IBook, IReviewResponse } from "@/types/globalTypes";
 
 interface IProps {
   data: IReviewResponse;
+  book: IBook;
 }
 
 export default function DisplayRating(props: IProps) {
-  const { data } = props;
+  const { data, book } = props;
 
   return (
     <div className="min-h-44">
@@ -49,7 +50,7 @@ export default function DisplayRating(props: IProps) {
         <hr className="my-2 md:hidden" />
         <div>
           <h2 className="text-lg mb-4">Share your thoughts</h2>
-          <ReviewForm></ReviewForm>
+          <ReviewForm book={book}></ReviewForm>
         </div>
       </div>
     </div>

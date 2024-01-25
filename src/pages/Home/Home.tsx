@@ -10,6 +10,7 @@ import EditorsPickBooks from "./EditorsPick";
 
 export default function Home() {
   const { data, isLoading } = useGetBooksQuery(undefined);
+
   return (
     <div className="">
       <div>

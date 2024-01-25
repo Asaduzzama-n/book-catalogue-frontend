@@ -1,20 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
-import image1 from "../../assets/images/economicsCat.png";
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { DialogClose } from "@radix-ui/react-dialog";
 import { usePostReviewMutation } from "@/redux/features/review/reviewsApi";
 import { useParams } from "react-router-dom";
-import { useAppDispatch } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { setHelpful } from "@/redux/features/review/reviewSlice";
+import { TiStar } from "react-icons/ti";
 
 type Inputs = {
   title: string;
   review: string;
 };
 
-export function ReviewForm() {
+export function ReviewForm(props: any) {
+  const { book } = props;
+
   const {
     register,
     handleSubmit,
@@ -26,6 +29,7 @@ export function ReviewForm() {
   const [postReview] = usePostReviewMutation();
   const { id } = useParams();
   const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.user);
 
   const onSubmit = async (data: any) => {
     const options = {
@@ -34,7 +38,7 @@ export function ReviewForm() {
         review: data.review,
         title: data.title,
         book: id,
-        user: "65201a3167d8a9df18165ea8",
+        user: user.id,
       },
     };
     const res = await postReview(options);
@@ -53,12 +57,16 @@ export function ReviewForm() {
       <DialogTrigger asChild>
         <Button className=" text-white w-full">Write you review</Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] md:max-w-[600px]">
+      <DialogContent className="sm:max-w-[425px] md:max-w-[600px] dark:bg-primary border-none">
         <div className="flex flex-col md:flex-row my-4">
-          <div className="w-full md:w-1/4 p-2">
-            <img src={image1} alt="image" />
-            <p>Title will go there</p>
-            <span>By: Author Name</span>
+          <div className="w-full md:w-1/4 p-1 mt-2">
+            <img className="max-h-24" src={book?.coverImg?.url} alt="image" />
+            <p className="text-sm font-medium mt-2">{book?.title}</p>
+            <br />
+            <p className="">
+              <span className="font-medium text-sm">By:</span>{" "}
+              {book?.author?.author1?.name?.firstName}
+            </p>
           </div>
           <div className="w-full md:w-3/4 p-2 font-serif ">
             <h2 className="text-2xl mb-2">Share your thoughts</h2>
@@ -74,11 +82,11 @@ export function ReviewForm() {
                     onClick={() => handleRatingChange(star)}
                     className={`text-3xl ${
                       star <= rating
-                        ? "text-primary"
-                        : "text-gray-200 hover:text-primary"
+                        ? "text-primary dark:text-customBG"
+                        : "text-gray-200 hover:text-primary dark:text-black"
                     } focus:outline-none`}
                   >
-                    ★
+                    <TiStar />
                   </button>
                 ))}
               </div>

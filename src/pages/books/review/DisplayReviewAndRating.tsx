@@ -9,11 +9,10 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { changePageNumber } from "@/redux/features/review/reviewSlice";
 
-export default function DisplayReviewAndRating() {
+export default function DisplayReviewAndRating(props: any) {
+  const book = props.book;
   const { id } = useParams();
-
   const { data } = useGetReviewsQuery(id) || {};
-
   const { pageNumber, limit, sortBy, rating, sortOrder } = useAppSelector(
     (state) => state.review
   );
@@ -53,7 +52,7 @@ export default function DisplayReviewAndRating() {
         {!data || !data.data ? (
           <Loader></Loader>
         ) : (
-          <DisplayRating data={data?.data}></DisplayRating>
+          <DisplayRating data={data?.data} book={book}></DisplayRating>
         )}
       </div>
       <hr className="mb-5" />

@@ -2,25 +2,13 @@ import BookCard from "@/components/shared/cards/BookCard";
 
 import { IBook } from "@/types/globalTypes";
 import Loader from "@/components/shared/Loader";
-import { useGetFilteredBooksQuery } from "@/redux/features/shop/shopApi";
-import { useAppSelector } from "@/redux/hooks";
 
-export default function ShopDisplay() {
-  // const { data, isLoading } = useGetBooksQuery(undefined);
-  const { language, category, minPrice, maxPrice } = useAppSelector(
-    (state) => state.shop
-  );
+export default function ShopDisplay(props: any) {
+  const books: IBook[] = props.books;
 
-  const { data, isLoading } = useGetFilteredBooksQuery({
-    language,
-    category,
-    minPrice,
-    maxPrice,
-  });
-  const books: IBook[] = data?.data;
   return (
     <div>
-      {isLoading ? (
+      {!books ? (
         <div className="flex justify-center items-center h-screen">
           <Loader></Loader>
         </div>

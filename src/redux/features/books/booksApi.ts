@@ -2,7 +2,9 @@ import { api } from "@/redux/api/apiSlice";
 
 export const bookApi = api.injectEndpoints({
   endpoints: (build) => ({
-    getBooks: build.query({ query: () => ({ url: "/book", method: "GET" }) }),
+    getBooks: build.query({
+      query: () => ({ url: "/book?limit=200", method: "GET" }),
+    }),
     getSingleBook: build.query({
       query: (id) => ({ url: `/book/${id}`, method: "GET" }),
     }),
