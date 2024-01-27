@@ -18,11 +18,9 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { useGetCategoryQuery } from "@/redux/features/shop/shopApi";
 
 export default function ShopFilter(props: any) {
-  // const dispatch = useAppDispatch();
   const { setSearchParams, category, language, minPrice, maxPrice } = props;
 
   const handleLanguageChange = (data: string) => {
-    // dispatch(setLanguage(data));
     setSearchParams((prevParams: string) => {
       const updatedParams = new URLSearchParams(prevParams);
       updatedParams.set("language", data);
@@ -31,7 +29,6 @@ export default function ShopFilter(props: any) {
   };
 
   const handleCategoryChange = (data: { category: string; key: string }) => {
-    // dispatch(setCategory(data));
     setSearchParams((prevParams: string) => {
       const updatedParams = new URLSearchParams(prevParams);
       updatedParams.set("category", data.key);
@@ -44,12 +41,6 @@ export default function ShopFilter(props: any) {
       setSearchParams((prevParams: string) => {
         const updatedParams = new URLSearchParams(prevParams);
         if (Array.isArray(newRange)) {
-          // dispatch(
-          //   setPriceRange({
-          //     minPrice: Number(newRange[0]),
-          //     maxPrice: Number(newRange[1]),
-          //   })
-          // );
           updatedParams.set("minPrice", newRange[0] + "");
           updatedParams.set("maxPrice", newRange[1] + "");
         }
@@ -61,6 +52,12 @@ export default function ShopFilter(props: any) {
 
   const handlePriceChange = (newRange: number | number[]) => {
     debouncedHandlePriceChange(newRange);
+  };
+
+  const handleResetFilter = () => {
+   
+      setSearchParams(() => new URLSearchParams());
+    
   };
 
   const languages = [
@@ -170,7 +167,7 @@ export default function ShopFilter(props: any) {
       </div>
 
       <button
-        // onClick={() => handleResetFilter()}
+        onClick={() => handleResetFilter()}
         className="w-full p-2 bg-primary rounded-md my-5 font-medium text-white"
       >
         Reset Filter

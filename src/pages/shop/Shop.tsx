@@ -35,9 +35,10 @@ export default function Shop() {
 
   useEffect(() => {
     refetch();
-  }, [queryString, language, category, minPrice, maxPrice]);
+  }, [queryString, language, category, minPrice, maxPrice,limit,sortBy,sortOrder]);
 
   const handleLimitChange = (value: string) => {
+    //@ts-ignore
     setSearchParams((prevParams: string) => {
       const updatedParams = new URLSearchParams(prevParams);
       updatedParams.set("limit", value);
@@ -48,7 +49,7 @@ export default function Shop() {
   const handleSortByChange = (value: string) => {
     // Split the value into sortBy and sortOrder
     const [sortBy, sortOrder] = value.split("-");
-
+    //@ts-ignore
     setSearchParams((prevParams: string) => {
       const updatedParams = new URLSearchParams(prevParams);
       updatedParams.set("sortBy", sortBy);
