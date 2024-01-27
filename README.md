@@ -1,53 +1,65 @@
-eBook Web Platform
+<!-- <p align="center">
+  <img src="link/to/your/logo.png" alt="Platform Logo" width="150">
+</p> -->
 
-Welcome to our eBook web platform! This platform provides a secure and feature-rich environment for users to purchase, read, and review eBooks.
+# eBook Web Platform
 
-Features
-DRM Protection: Prevents copy-paste and print screen to protect eBook content.
-Authentication: Uses access and refresh token-based authentication to prevent unauthorized access.
-eBook Preview: Allows users to preview a partial part of the eBook before making a purchase.
-SSL Commerz Integration: Securely handles payments using SSL Commerz for a seamless transaction experience.
-Epub Reader: Enables users to read purchased eBooks using an Epub reader.
-User Interaction: Users can give reviews, update their profiles, and more.
-Internationalization (i18next): Supports Bangla and English languages.
-Dark and Light Themes: Provides theme options for a personalized reading experience.
-Technologies Used
-React
-Redux Toolkit
-TypeScript
-React Hook Form
-Tailwind CSS
-Authentication
-When a user logs in, an access token is provided and stored in local storage with a short lifespan.
-A refresh token is also provided and stored in secured cookies with a longer lifespan.
-If the access token becomes invalid, the refresh token is used to obtain a new access token for continued access to protected routes.
-Getting Started
-Clone the Repository:
+Welcome to our secure and feature-rich eBook web platform, where you can purchase, read, and review eBooks hassle-free.
 
-bash
-Copy code
-git clone https://github.com/your-username/ebook-platform.git
-Install Dependencies:
+## Features
 
-bash
-Copy code
+- **DRM Protection:** Prevents unauthorized copying and printing of eBook content.
+- **Authentication:** Uses access and refresh token-based authentication for secure access.
+- **Ebook Preview:** Users can preview a part of the eBook before purchase.
+- **SSL Commerz Integration:** Secure payments through SSL Commerz.
+- **Epub Reader:** Enjoy reading purchased eBooks using an Epub reader.
+- **User Interaction:** Give reviews, update profiles, and more.
+- **Internationalization:** Supports Bangla and English languages (i18next).
+- **Themes:** Dark and light themes for a personalized reading experience.
+
+## Technologies
+
+- **React**
+- **Redux Toolkit**
+- **TypeScript**
+- **React Hook Form**
+- **Tailwind CSS**
+
+## Authentication
+
+- Access token with a short lifespan stored in local storage.
+- Refresh token with a longer lifespan stored in secured cookies.
+- Refresh token used to obtain a new access token when needed.
+
+## Getting Started
+
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/your-username/ebook-platform.git
+   ```
+
+## Install Dependencies:
+
 cd ebook-platform
 npm install
-Set Up Environment Variables:
-Copy the .env.example file to .env and configure your environment variables, including SSL Commerz credentials.
 
-Run the Application:
+## Set Up Environment Variables:
 
-bash
-Copy code
+Copy .env.example to .env and configure your environment variables, including SSL Commerz credentials.
+
+## Run the Application:
+
 npm start
-Contributing
-We welcome contributions! If you find a bug or have an enhancement, please create an issue or submit a pull request.
+Contribution
 
-License
-This project is licensed under the MIT License.
+We welcome contributions! Feel free to report bugs or submit pull requests.
 
-Contact
-For any inquiries or issues, please contact asad_uzzaman@outlook.com.
+## License
 
-© 2024 Asaduzzaman. All rights reserved.
+This project is licensed under the MIT License. See LICENSE for details.
+
+## Contact
+
+For inquiries, contact asad_uzzaman@outlook.com.
+
+## © 2024 Asaduzzaman. All rights reserved.
