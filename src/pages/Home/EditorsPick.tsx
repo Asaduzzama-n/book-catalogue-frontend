@@ -1,10 +1,13 @@
 import { filterBooksByTag } from "@/helpers/getBookByTag-helper";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export default function EditorsPickBooks(props: any) {
   const { books } = props;
   const editorsPickBooks = filterBooksByTag(books, "Editors pick");
   console.log(editorsPickBooks);
+
+  const {t} = useTranslation()
 
   const randomIndex = Math.floor(Math.random() * editorsPickBooks.length);
   return (
@@ -23,21 +26,21 @@ export default function EditorsPickBooks(props: any) {
               {editorsPickBooks[randomIndex]?.title}
             </h1>
             <p className="my-2">
-              <span className="font-medium">By: </span>
+              <span className="font-medium">{t("by")}: </span>
               {editorsPickBooks[randomIndex]?.author?.author1?.name.firstName}
             </p>
             <p>
-              <span className="font-medium">Category: </span>
+              <span className="font-medium">{t("category_name")}: </span>
               {editorsPickBooks[randomIndex]?.categoryName}
             </p>
             <div className="my-5 ">
-              <span className="font-medium">Description: </span>
+              <span className="font-medium">{t("descriptions")}: </span>
               {editorsPickBooks[1]?.bookDescription}
             </div>
 
             <div>
               <h3 className="text-lg font-medium">
-                Price: {editorsPickBooks[randomIndex]?.price}
+                {t("price")}: {editorsPickBooks[randomIndex]?.price}
               </h3>
             </div>
           </div>
@@ -46,7 +49,7 @@ export default function EditorsPickBooks(props: any) {
               className="bg-primary dark:bg-customBG dark:text-primary px-4 py-2 text-white font-medium rounded-md"
               to={`/details/${editorsPickBooks[randomIndex].id}`}
             >
-              View Details
+             {t("view_details")}
             </Link>
           </div>
         </div>

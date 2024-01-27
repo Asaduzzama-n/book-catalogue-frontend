@@ -1,4 +1,5 @@
 import { filterBooksByTag } from "@/helpers/getBookByTag-helper";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 export default function TrendingBooks(props: any) {
@@ -6,6 +7,8 @@ export default function TrendingBooks(props: any) {
   const trendingBooks = filterBooksByTag(books, "Trending");
   console.log(trendingBooks);
   const randomIndex = Math.floor(Math.random() * trendingBooks.length);
+
+  const {t} = useTranslation()
 
   return (
     <div className="bg-customBG dark:bg-primary rounded-md h-full w-full p-5 ">
@@ -23,21 +26,21 @@ export default function TrendingBooks(props: any) {
               {trendingBooks[randomIndex]?.title}
             </h1>
             <p className="my-2">
-              <span className="font-medium">By: </span>
+              <span className="font-medium">{t("by")}: </span>
               {trendingBooks[randomIndex]?.author?.author1?.name.firstName}
             </p>
             <p>
-              <span className="font-medium">Category: </span>
+              <span className="font-medium">{t("category_name")}: </span>
               {trendingBooks[randomIndex]?.categoryName}
             </p>
             <div className="my-5 ">
-              <span className="font-medium">Description: </span>
+              <span className="font-medium">{t("descriptions")}: </span>
               {trendingBooks[1]?.bookDescription}
             </div>
 
             <div>
               <h3 className="text-lg font-medium">
-                Price: {trendingBooks[randomIndex]?.price}
+                {t("price")}: {trendingBooks[randomIndex]?.price}
               </h3>
             </div>
           </div>
@@ -46,7 +49,7 @@ export default function TrendingBooks(props: any) {
               className="bg-primary dark:bg-customBG dark:text-primary px-4 py-2 text-white font-medium rounded-md"
               to={`/details/${trendingBooks[randomIndex].id}`}
             >
-              View Details
+              {t("view_details")}:
             </Link>
           </div>
         </div>

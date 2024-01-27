@@ -1,16 +1,19 @@
-import HomeCarousel from "./HomeCarousel";
-import HomeCategory from "./HomeCategory";
-import HomeNewArrival from "./HomeNewArrival";
-import HomeBestSeller from "./HomeBestSeller";
+
 
 import { useGetBooksQuery } from "@/redux/features/books/booksApi";
 import Loader from "@/components/shared/Loader";
+
+import { useTranslation } from "react-i18next";
+import HomeCarousel from "./HomeCarousel";
+import HomeCategory from "./HomeCategory";
+import HomeNewArrival from "./HomeNewArrival";
 import TrendingBooks from "./TrendingBooks";
+import HomeBestSeller from "./HomeBestSeller";
 import EditorsPickBooks from "./EditorsPick";
 
 export default function Home() {
   const { data, isLoading } = useGetBooksQuery(undefined);
-
+  const {t} = useTranslation();
   return (
     <div className="">
       <div>
@@ -33,7 +36,7 @@ export default function Home() {
 
       <div className="container  md:h-[450px] ">
         <h3 className="scroll-m-20 text-2xl my-4 font-semibold tracking-tight first:mt-0 mb-5">
-          TRENDING
+          {t("trending")}
         </h3>
         {isLoading ? (
           <Loader></Loader>
@@ -52,7 +55,7 @@ export default function Home() {
       </div>
       <div className="container  md:h-[450px] ">
         <h3 className="scroll-m-20 text-2xl my-4 font-semibold tracking-tight first:mt-0 ">
-          EDITORS PICK
+          {t("editors_pick")}
         </h3>
         {isLoading ? (
           <Loader></Loader>

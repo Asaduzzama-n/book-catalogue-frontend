@@ -1,4 +1,16 @@
 {
   "nav_books": "Books",
-  "nav_author": "Authors"
+  "nav_author": "Authors",
+  "categories_description": "A pioneer in academic and scholarly publishing in Bangladesh, UPL has cultivated the work of some of Bangladesh’s best scholars and literary talents. Our catalog includes books on politics, governance, history, sociology, development, gender, education, health, environment, anthropology, religion, economics, autobiography/biography, and a commendable collection of literary titles – in both English and Bangla languages. UPL’s scholarly publications are considered some of the best resources for research on Bangladesh and are highly sought after by academics worldwide. Our literary collection also presents the works of brilliant writers in the poetry, fiction and short story genres.",
+  "categories_name": "Categories",
+  "new_arrival": "NEW ARRIVAL",
+  "best_seller": "BEST SELLER",
+  "view_more": "View more",
+  "trending": "TRENDING",
+  "editors_pick": "EDITORS PICK",
+  "by": "By",
+  "category_name": "Category",
+  "descriptions": "Description",
+  "price": "Price",
+  "view_details": "View details"
 }

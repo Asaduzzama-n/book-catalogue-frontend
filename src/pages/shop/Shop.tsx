@@ -35,7 +35,7 @@ export default function Shop() {
 
   useEffect(() => {
     refetch();
-  }, [queryString, language, category, minPrice, maxPrice]);
+  }, [queryString, language, category, minPrice, maxPrice,limit,sortBy,sortOrder]);
 
   const handleLimitChange = (value: string) => {
     setSearchParams((prevParams: string) => {

@@ -4,8 +4,12 @@ import socialScienceCat from "../../assets/images/socialScienceCat.png";
 import economicsCat from "../../assets/images/economicsCat.png";
 import politicalScienceCat from "../../assets/images/politicalScienceCat.png";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
+
 
 export default function HomeCategory() {
+const {t} = useTranslation();
+
   return (
     <div className="grid grid-cols-2 gap-20 mt-10">
       <div className="">
@@ -13,17 +17,8 @@ export default function HomeCategory() {
           CATEGORIES
         </h2>
         <p className="my-10 text-lg font-sans ">
-          A pioneer in academic and scholarly publishing in Bangladesh, UPL has
-          cultivated the work of some of Bangladesh’s best scholars and literary
-          talents. Our catalog includes books on politics, governance, history,
-          sociology, development, gender, education, health, environment,
-          anthropology, religion, economics, autobiography/biography, and a
-          commendable collection of literary titles – in both English and Bangla
-          languages. <br /> <br />
-          UPL’s scholarly publications are considered some of the best resources
-          for research on Bangladesh and are highly sought after by academics
-          worldwide. Our literary collection also presents the works of
-          brilliant writers in the poetry, fiction and short story genres.
+          {t("categories_description")}
+          
         </p>
         <Button className="bg-primary  text-white">DOWNLOAD CATALOGUE</Button>
       </div>
