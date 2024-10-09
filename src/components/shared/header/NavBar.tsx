@@ -1,6 +1,6 @@
 "use client";
 
-import logo from "../../../assets/logo/logo-2.png";
+import logo from "../../../assets/logo/logo-3.png";
 
 import { NavMenuSheet } from "../navSheets/NavMenuSheets";
 import NavContent from "./NavContent";

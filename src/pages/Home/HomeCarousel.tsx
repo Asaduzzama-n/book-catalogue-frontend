@@ -2,6 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import bookC1 from "../../assets/images/book1.jpg";
+import bookC2 from "../../assets/images/book2.jpg";
+import bookC3 from "../../assets/images/book3.jpg";
 
 export default function HomeCarousel() {
   return (
@@ -21,25 +24,13 @@ export default function HomeCarousel() {
         className="mySwiper h-60  md:h-[400px] "
       >
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).webp"
-            alt=""
-          />
+          <img className="w-full" src={bookC1} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://wowslider.com/sliders/demo-93/data1/images/landscape.jpg"
-            alt=""
-          />
+          <img className="w-full" src={bookC2} alt="" />
         </SwiperSlide>
         <SwiperSlide>
-          <img
-            className="w-full"
-            src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).webp"
-            alt=""
-          />
+          <img className="w-full" src={bookC3} alt="" />
         </SwiperSlide>
       </Swiper>
     </>
