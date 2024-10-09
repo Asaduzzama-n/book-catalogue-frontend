@@ -6,6 +6,10 @@
 
 Welcome to our secure and feature-rich eBook web platform, where you can purchase, read, and review eBooks hassle-free.
 
+## Live Link
+
+[text](https://versevoyage-91e8e-7ba99.web.app/)
+
 ## Features
 
 - **DRM Protection:** Prevents unauthorized copying and printing of eBook content.
@@ -40,14 +44,14 @@ Welcome to our secure and feature-rich eBook web platform, where you can purchas
 
 ## Backend Part
 
-1. **Visit the Repository:**
+1. **Visit the Repository for backend part:**
    ```bash
    https://github.com/Asaduzzama-n/eBook-backend
    ```
 
 ## Install Dependencies:
 
-cd ebook-platform
+cd book-catalogue-frontend
 npm install
 
 ## Set Up Environment Variables:

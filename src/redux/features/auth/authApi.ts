@@ -6,6 +6,8 @@ export const authApi = api.injectEndpoints({
       query: ({ data }) => ({
         url: "/auth/signup",
         method: "POST",
+        credentials: "include",
+
         data,
       }),
     }),
@@ -13,6 +15,8 @@ export const authApi = api.injectEndpoints({
       query: ({ data }) => ({
         url: "/auth/login",
         method: "POST",
+        credentials: "include",
+
         data,
       }),
     }),
@@ -20,6 +24,8 @@ export const authApi = api.injectEndpoints({
       query: ({ data }) => ({
         url: "/auth/forgot-password",
         method: "POST",
+        credentials: "include",
+
         data,
       }),
     }),
@@ -27,6 +33,8 @@ export const authApi = api.injectEndpoints({
       query: ({ data }) => ({
         url: "/auth/reset-password",
         method: "POST",
+        credentials: "include",
+
         data,
       }),
     }),
@@ -34,6 +42,8 @@ export const authApi = api.injectEndpoints({
       query: ({ data }) => ({
         url: "/auth/change-password",
         method: "POST",
+        credentials: "include",
+
         data,
       }),
     }),
