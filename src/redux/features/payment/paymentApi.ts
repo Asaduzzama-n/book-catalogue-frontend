@@ -6,6 +6,7 @@ export const paymentApi = api.injectEndpoints({
       query: ({ data }: any) => ({
         url: "/payment/init",
         method: "POST",
+        credentials: "include",
         data,
       }),
       invalidatesTags: ["payment"],
@@ -13,6 +14,7 @@ export const paymentApi = api.injectEndpoints({
     getSinglePayment: builder.query({
       query: (invoiceId: string) => ({
         url: `/payment/${invoiceId}`,
+        credentials: "include",
         method: "GET",
       }),
     }),
@@ -20,6 +22,7 @@ export const paymentApi = api.injectEndpoints({
       query: () => ({
         url: "/user/purchase-history",
         method: "GET",
+        credentials: "include",
       }),
       providesTags: ["payment"],
     }),

@@ -6,12 +6,14 @@ export const shopApi = api.injectEndpoints({
       query: (filterUrl: string) => ({
         url: `/book/${filterUrl}`,
         method: "GET",
+        credentials: "include",
       }),
     }),
     getCategory: builder.query({
       query: () => ({
         url: "/categories/",
         method: "GET",
+        credentials: "include",
       }),
     }),
   }),
