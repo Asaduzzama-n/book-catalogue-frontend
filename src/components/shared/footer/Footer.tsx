@@ -1,5 +1,4 @@
 import NewsLetter from "@/components/forms/NewsLetter";
-import logo from "../../../assets/logo/logo-2.png";
 
 import { Link } from "react-router-dom";
 import { TfiFacebook } from "react-icons/tfi";
@@ -18,23 +17,24 @@ export default function Footer() {
       </div>
 
       <div className="grid lg:grid-cols-3 md:gap-20 my-5 md:w-3/4 mx-auto ">
-        <div className="">
-          <img className="h-20 mb-4" src={logo} alt="" />
-          <div className="md:w-1/2  text-md">
+        <div className="pt-20">
+          {/* <img className="h-20 mb-4" src={logo} alt="" /> */}
+          <h1 className="text-2xl font-bold">VERSEVOYAGE</h1>
+          <div className="md:w-1/2 text-md">
             <p className="my-2">
-              The University Press Limited 74/B/1 Green Road, RH Home Center 2nd
-              Floor, Suit# 232-239, Farmgate Dhaka 1215
+              VerseVoyage Publishing, 123 Random Street, 4th Floor, Suite#
+              101-105, Downtown City 12345
             </p>
-            <p className="my-2">Trade License No. TRAD/DNCC/075880/2022</p>
+            <p className="my-2">Trade License No. TRAD/XYZ/987654/2024</p>
             <ul className="text-md">
-              <li className="flex items-center md:justify-around">
-                <BiPhone></BiPhone> (+8802) 44815288
+              <li className="flex items-center ">
+                <BiPhone></BiPhone> (+123) 45678901
               </li>
-              <li className="flex items-center md:justify-around">
-                <BiPhone></BiPhone>(+8802) 44815289
+              <li className="flex items-center ">
+                <BiPhone></BiPhone> (+123) 98765432
               </li>
-              <li className="flex items-center md:justify-around">
-                <BiPhone></BiPhone>(+8802) 57160710
+              <li className="flex items-center ">
+                <BiPhone></BiPhone> (+123) 12345678
               </li>
             </ul>
           </div>

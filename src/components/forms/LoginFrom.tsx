@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import { Label } from "@radix-ui/react-label";
 import { Input } from "../ui/input";
@@ -11,7 +11,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useUserLoginMutation } from "@/redux/features/auth/authApi";
 import { toast } from "react-toastify";
 import { storeUserInfo } from "@/services/auth.service";
-import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { useAppDispatch } from "@/redux/hooks";
 import { setUser } from "@/redux/features/user/userSlice";
 
 interface LoginFormProps {
@@ -119,7 +119,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
             </Link>
           </div>
 
-          <div className="flex justify-center ">
+          {/* <div className="flex justify-center ">
             <div className="">
               <blockquote className="mb-2  italic">-or-</blockquote>
             </div>
@@ -129,7 +129,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
             className="bg-primary w-full h-10 text-lg font-semibold rounded-md hover:opacity-90  text-white"
           >
             Log in with Google
-          </button>
+          </button> */}
         </form>
       </div>
     </div>

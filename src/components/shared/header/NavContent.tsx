@@ -8,7 +8,7 @@ import {
 } from "@radix-ui/react-navigation-menu";
 import { useGetCategoryQuery } from "@/redux/features/shop/shopApi";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation, initReactI18next } from "react-i18next";
 import i18n from "i18next";
 import tEn from "../../../../public/locales/en/translation.json";
@@ -36,7 +36,7 @@ i18n
 interface ICategory {
   category: string;
   key: string;
-  parentCategory: String;
+  parentCategory: string;
 }
 export default function NavContent() {
   const { data } = useGetCategoryQuery(undefined) || {};
@@ -50,7 +50,8 @@ export default function NavContent() {
   };
 
   useEffect(() => {
-    let currentLang = localStorage.getItem("lang");
+    const currentLang = localStorage.getItem("lang");
+
     i18n.changeLanguage(currentLang!);
   }, []);
 
@@ -58,12 +59,12 @@ export default function NavContent() {
 
   return (
     <div>
-      <NavigationMenu className="false md:flex items-center justify-between list-none font-medium">
+      <NavigationMenu className="false md:flex items-center justify-between list-none font-medium ">
         <NavigationMenuItem className="my-5 md:mx-5 hover:text-primary  p-2 rounded-md">
           <NavigationMenuTrigger className="text-md">
             {t("nav_books")}
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="absolute left-0 w-full bg-customBG dark:bg-primary mt-6 md:mt-4   shadow-md p-4 z-10">
+          <NavigationMenuContent className="absolute left-0 w-full bg-customBG dark:bg-primary dark:text-white mt-6 md:mt-4   shadow-md p-4 z-10">
             <div className="md:flex justify-between lg:w-4/5 mx-auto max-h-80 overflow-y-auto">
               <div className="">
                 <h2 className="font-bold mb-2 border-b-2 border-primary dark:border-white">
@@ -166,10 +167,29 @@ export default function NavContent() {
             {t("nav_author")}
           </Link>
         </NavigationMenuItem>
-        <div className="flex items-center space-x-4">
-          <button onClick={changeLang("en")}>EN</button>
-          <button onClick={changeLang("de")}>BN</button>
+        <div className="flex items-center space-x-4 bg-gray-200 dark:bg-secondary px-2 py-1 rounded-full">
+          <button
+            className={` rounded-full px-2 transition duration-300 ${
+              i18n.language === "en"
+                ? "bg-white dark:bg-primary/90  dark:text-white text-primary "
+                : ""
+            } `}
+            onClick={changeLang("en")}
+          >
+            EN
+          </button>
+          <button
+            className={` rounded-full px-2 transition duration-300 ${
+              i18n.language === "de"
+                ? "bg-white dark:bg-primary/90 dark:text-white text-primary "
+                : ""
+            } `}
+            onClick={changeLang("de")}
+          >
+            BN
+          </button>
         </div>
+
         {/* <NavigationMenuItem className="my-5 inline-block md:hidden lg:inline-block md:mx-5 hover:bg-customBG dark:hover:bg-secondary p-2 rounded-md">
           <Link className="text-md" to="/best-sellers">
             Best sellers

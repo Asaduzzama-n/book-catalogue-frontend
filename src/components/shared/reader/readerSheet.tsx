@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Sheet,
   SheetClose,
@@ -36,8 +37,6 @@ export function ReaderSheet(props: IProps) {
   const { book, triggerButton } = props;
 
   //Disable Right and left click in reader
-
-  // Add event listeners for screenshot events
 
   const [page, setPage] = useState("");
   const [rendition, setRendition] = useState<Rendition | undefined>(undefined);
@@ -111,7 +110,7 @@ export function ReaderSheet(props: IProps) {
 
   useEffect(() => {
     rendition?.themes.fontSize(fontSize.toString() + "%");
-  }, [fontSize]);
+  }, [fontSize, rendition?.themes]);
 
   return (
     <div>
@@ -161,7 +160,11 @@ export function ReaderSheet(props: IProps) {
             </div>
             <div className="flex justify-end">{page}</div>
             <ReactReader
-              url={book?.bookUrl?.url}
+              url={
+                book?.quickViewUrl
+                  ? book?.quickViewUrl?.url
+                  : book?.bookUrl?.url
+              }
               title={book?.title}
               readerStyles={
                 theme === "dark" ? darkReaderTheme : lightReaderTheme

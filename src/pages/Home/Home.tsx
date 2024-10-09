@@ -1,5 +1,3 @@
-
-
 import { useGetBooksQuery } from "@/redux/features/books/booksApi";
 import Loader from "@/components/shared/Loader";
 
@@ -13,10 +11,10 @@ import EditorsPickBooks from "./EditorsPick";
 
 export default function Home() {
   const { data, isLoading } = useGetBooksQuery(undefined);
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className="">
-      <div>
+      <div className="md:container">
         <HomeCarousel></HomeCarousel>
       </div>
 
