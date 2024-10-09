@@ -35,7 +35,14 @@ Welcome to our secure and feature-rich eBook web platform, where you can purchas
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/ebook-platform.git
+   git clone git@github.com:Asaduzzama-n/book-catalogue-frontend.git
+   ```
+
+## Backend Part
+
+1. **Visit the Repository:**
+   ```bash
+   https://github.com/Asaduzzama-n/eBook-backend
    ```
 
 ## Install Dependencies:
